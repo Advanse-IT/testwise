@@ -204,12 +204,7 @@ export default function NeuralNet({ className = '' }) {
         })}
       </svg>
 
-      {/* Floating label */}
-      <div className="absolute bottom-0 left-0 right-0 text-center">
-        <span className="text-[11px] text-teal/60 tracking-widest uppercase font-medium">
-          Hover any node to trigger a signal
-        </span>
-      </div>
+
     </div>
   )
 }
