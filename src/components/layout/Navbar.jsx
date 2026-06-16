@@ -22,24 +22,24 @@ export default function Navbar() {
 
   return (
     <>
-      <header className={`fixed top-0 inset-x-0 z-50 h-16 flex items-center justify-between px-6 lg:px-10 transition-all duration-300 ${
+      <header className={`fixed top-0 inset-x-0 z-50 h-20 flex items-center justify-between px-6 lg:px-10 transition-all duration-300 ${
         scrolled
           ? 'bg-[#0D1B2E]/95 backdrop-blur-xl border-b border-white/[0.07]'
           : 'bg-transparent'
       }`}>
         <Link to="/" className="flex items-center gap-3">
-          <img src="/icon-192.png" alt="Testwise Logo" className="w-8 h-8 rounded-lg object-cover" />
+          <img src="/icon-192.png" alt="Testwise Logo" className="w-12 h-12 rounded-lg object-cover" />
           <div>
-            <div className="text-[15px] font-semibold tracking-tight leading-none text-snow">
+            <div className="text-[20px] font-semibold tracking-tight leading-none text-snow">
               Test<span className="text-teal">wise</span>
             </div>
-            <div className="text-[10px] text-fog tracking-[0.1em] uppercase leading-none mt-0.5">
+            <div className="text-[11px] text-fog tracking-[0.1em] uppercase leading-none mt-0.5">
               by {SITE.parent}
             </div>
           </div>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-7" aria-label="Main">
+        <nav className="hidden md:flex items-center gap-9" aria-label="Main">
           {LINKS.map(l => (
             <NavLink key={l.to} to={l.to}
               className={({ isActive }) =>
@@ -59,7 +59,7 @@ export default function Navbar() {
       </header>
 
       {open && (
-        <div className="fixed top-16 inset-x-0 z-40 bg-surface border-b border-white/[0.07] px-6 py-5 flex flex-col gap-4 md:hidden">
+        <div className="fixed top-20 inset-x-0 z-40 bg-surface border-b border-white/[0.07] px-6 py-5 flex flex-col gap-4 md:hidden">
           {LINKS.map(l => (
             <NavLink key={l.to} to={l.to} onClick={() => setOpen(false)}
               className={({ isActive }) =>
