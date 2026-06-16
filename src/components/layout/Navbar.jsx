@@ -23,17 +23,21 @@ export default function Navbar() {
   return (
     <>
       <header className={`fixed top-0 inset-x-0 z-50 h-16 flex items-center justify-between px-6 lg:px-10 transition-all duration-300 ${
-        scrolled ? 'bg-base/95 backdrop-blur-xl border-b border-border' : 'bg-transparent'
+        scrolled
+          ? 'bg-[#0D1B2E]/95 backdrop-blur-xl border-b border-white/[0.07]'
+          : 'bg-transparent'
       }`}>
         <Link to="/" className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg gradient-brand flex items-center justify-center text-xs font-bold text-white tracking-tight">
+          <div className="w-8 h-8 rounded-lg gradient-brand flex items-center justify-center text-[12px] font-bold text-[#0D1B2E]">
             TW
           </div>
           <div>
             <div className="text-[15px] font-semibold tracking-tight leading-none text-snow">
               Test<span className="text-teal-bright">wise</span>
             </div>
-            <div className="text-[10px] text-fog tracking-[0.1em] uppercase mt-0.5">by {SITE.parent}</div>
+            <div className="text-[10px] text-fog tracking-[0.1em] uppercase leading-none mt-0.5">
+              by {SITE.parent}
+            </div>
           </div>
         </Link>
 
@@ -57,14 +61,16 @@ export default function Navbar() {
       </header>
 
       {open && (
-        <div className="fixed top-16 inset-x-0 z-40 bg-surface border-b border-border px-6 py-5 flex flex-col gap-4 md:hidden">
+        <div className="fixed top-16 inset-x-0 z-40 bg-surface border-b border-white/[0.07] px-6 py-5 flex flex-col gap-4 md:hidden">
           {LINKS.map(l => (
             <NavLink key={l.to} to={l.to} onClick={() => setOpen(false)}
               className={({ isActive }) =>
                 `text-[15px] font-medium ${isActive ? 'text-teal-bright' : 'text-mist'}`
               }>{l.label}</NavLink>
           ))}
-          <Link to="/contact" onClick={() => setOpen(false)} className="btn-primary justify-center mt-1 text-[14px]">Book a call</Link>
+          <Link to="/contact" onClick={() => setOpen(false)} className="btn-primary justify-center mt-1 text-[14px]">
+            Book a call
+          </Link>
         </div>
       )}
     </>
