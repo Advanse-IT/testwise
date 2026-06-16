@@ -151,7 +151,7 @@ export default function Contact() {
                       animate={{ opacity: 1, scale: 1 }}
                       className="flex flex-col items-center justify-center py-16 text-center"
                     >
-                      <div className="w-16 h-16 rounded-full bg-teal/15 border border-teal/30 flex items-center justify-center mb-5">
+                      <div className="w-16 h-24 rounded-full bg-teal/15 border border-teal/30 flex items-center justify-center mb-5">
                         <CheckCircle size={28} className="text-teal"/>
                       </div>
                       <h3 className="text-[20px] font-bold text-snow mb-2">Message sent!</h3>

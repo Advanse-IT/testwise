@@ -22,13 +22,13 @@ export default function Navbar() {
 
   return (
     <>
-      <header className={`fixed top-0 inset-x-0 z-50 h-20 flex items-center justify-between px-6 lg:px-10 transition-all duration-300 ${
+      <header className={`fixed top-0 inset-x-0 z-50 h-24 flex items-center justify-between px-6 lg:px-10 transition-all duration-300 ${
         scrolled
           ? 'bg-[#0D1B2E]/95 backdrop-blur-xl border-b border-white/[0.07]'
           : 'bg-transparent'
       }`}>
         <Link to="/" className="flex items-center gap-3">
-          <img src="/icon-192.png" alt="Testwise Logo" className="w-12 h-12 rounded-lg object-cover" />
+          <img src="/icon-192.png" alt="Testwise Logo" className="w-16 h-16 rounded-lg object-cover" />
           <div>
             <div className="text-[20px] font-semibold tracking-tight leading-none text-snow">
               Test<span className="text-teal">wise</span>

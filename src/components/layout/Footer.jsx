@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <img src="/icon-192.png" alt="Testwise Logo" className="w-8 h-8 rounded-lg object-cover" />
+              <img src="/icon-192.png" alt="Testwise Logo" className="w-16 h-16 rounded-lg object-cover" />
               <div>
                 <div className="text-[15px] font-semibold tracking-tight text-snow">Test<span className="text-teal">wise</span></div>
                 <div className="text-[10px] text-fog tracking-widest uppercase mt-0.5">by {SITE.parent}</div>

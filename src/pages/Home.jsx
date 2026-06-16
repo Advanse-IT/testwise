@@ -158,7 +158,7 @@ export default function Home() {
               {PIPELINE.map(({ Icon, label, sub }, i) => (
                 <div key={i} className="flex items-center flex-shrink-0">
                   <div className="group flex flex-col items-center px-7 py-10 transition-colors duration-200 hover:bg-teal/5">
-                    <div className="w-12 h-12 rounded-xl bg-raised border border-border flex items-center justify-center mb-4
+                    <div className="w-16 h-16 rounded-xl bg-raised border border-border flex items-center justify-center mb-4
                       group-hover:border-teal/30 group-hover:shadow-glow-teal transition-all duration-300">
                       <Icon size={20} className="text-teal/60 group-hover:text-teal transition-colors duration-200"/>
                     </div>
