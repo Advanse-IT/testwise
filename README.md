@@ -1,68 +1,83 @@
 # Testwise — by Advanse-IT
 
-> Autonomous QA that knows when to ask.
+> Autonomous QA, built around your stack.
 
-Production website for **Testwise**, Advanse-IT's autonomous AI QA pipeline product.
-
-**Live:** [testwise.advanseit.com.au](https://testwise.advanseit.com.au)
+**Live:** https://testwise.advanseit.com.au
 
 ## Stack
 
-- Pure HTML/CSS/JS — zero build step, zero dependencies
+- React 18 + Vite
+- React Router v6 (multi-page SPA)
+- Framer Motion (page transitions + scroll animations)
+- Tailwind CSS (custom enterprise design tokens)
+- Lucide React (icons)
 - Deployed via Cloudflare Pages
-- Fonts: Syne + DM Sans (Google Fonts)
-- Icons: Font Awesome 6 (CDN)
 
-## Deploy
+## Project structure
 
-### Option A — Cloudflare Pages dashboard (simplest)
-1. Push this repo to GitHub under `Advanse-IT` org
-2. Go to Cloudflare Pages → Create project → Connect to Git
-3. Select this repo, set build command to blank, output directory to `.`
-4. Add custom domain: `testwise.advanseit.com.au`
+```
+src/
+├── pages/
+│   ├── Home.jsx           # Landing page
+│   ├── Pipeline.jsx       # Interactive pipeline configurator
+│   ├── HowItWorks.jsx     # Implementation steps
+│   ├── Industries.jsx     # Verticals and compliance
+│   ├── Pricing.jsx        # Pricing + FAQ
+│   ├── Contact.jsx        # Contact page
+│   └── NotFound.jsx       # 404
+├── components/
+│   ├── layout/
+│   │   ├── Navbar.jsx
+│   │   └── Footer.jsx
+│   └── ui/
+│       ├── PageWrapper.jsx  # Page transition wrapper
+│       ├── Reveal.jsx       # Scroll reveal animation
+│       ├── SectionHeader.jsx
+│       ├── Divider.jsx
+│       ├── ParticleCanvas.jsx
+│       └── Icon.jsx
+├── hooks/
+│   ├── useInView.js        # Intersection Observer hook
+│   ├── useCountUp.js       # Animated number counter
+│   └── useParticleCanvas.js
+├── lib/
+│   └── data.js             # All site content (single source of truth)
+└── index.css               # Global styles + design tokens
+```
 
-### Option B — GitHub Actions (automatic on push)
-1. Add two repo secrets:
-   - `CLOUDFLARE_API_TOKEN` — generate at dash.cloudflare.com/profile/api-tokens
-   - `CLOUDFLARE_ACCOUNT_ID` — found on your Cloudflare dashboard right sidebar
-2. Push to `main` — deploys automatically
-
-### Custom domain setup
-In Cloudflare DNS (advanseit.com.au zone):
-- Add CNAME: `testwise` → `testwise-advanseit.pages.dev`
-- Cloudflare Pages will auto-provision SSL
-
-## Local development
-
-No build step needed. Just open `index.html` in a browser, or:
+## Dev
 
 ```bash
-npx serve .
+npm install
+npm run dev       # http://localhost:5173
+npm run build     # Production build to /dist
+npm run preview   # Preview production build
 ```
 
-## Structure
+## Deploy to Cloudflare Pages
 
-```
-/
-├── index.html          # Entire site (single file)
-├── _headers            # Cloudflare security headers
-├── .github/
-│   └── workflows/
-│       └── deploy.yml  # Auto-deploy on push to main
-└── README.md
-```
+### Option A — Dashboard (simplest, no secrets needed)
+1. Push this repo to GitHub under your Advanse-IT org
+2. Cloudflare Pages → Create project → Connect to Git → select repo
+3. Build command: `npm run build`
+4. Build output directory: `dist`
+5. Add custom domain: `testwise.advanseit.com.au`
+
+### Option B — GitHub Actions (auto-deploy on push to main)
+Add two repository secrets:
+- `CLOUDFLARE_API_TOKEN` — from dash.cloudflare.com/profile/api-tokens (use "Edit Cloudflare Workers" template)
+- `CLOUDFLARE_ACCOUNT_ID` — from the right sidebar of your Cloudflare dashboard
+
+### Custom domain DNS (in Cloudflare DNS for advanseit.com.au)
+Add: `CNAME testwise → testwise-advanseit.pages.dev`
+Cloudflare Pages auto-provisions SSL.
 
 ## Updating content
 
-All content is in `index.html`. Key sections:
-
-- **Hero stats** — search `hero-stat-val`
-- **Pipeline stages** — search `const STAGES`
-- **Mode presets** — search `const MODES`
-- **Pricing** — search `price-card`
-- **FAQ** — search `const FAQS`
-- **Contact email** — search `hello@advanseit.com.au`
-
----
-
-© 2026 Advanse-IT Pty Ltd · Brisbane, Australia
+All content lives in `src/lib/data.js`. Edit that file to update:
+- Pipeline stages and tool names
+- Gate mode presets
+- Vertical/industry descriptions
+- Pricing tiers and features
+- FAQ answers
+- Contact details
