@@ -14,7 +14,7 @@ export default function App() {
   const location = useLocation()
 
   return (
-    <div className="min-h-screen bg-void text-snow font-dm flex flex-col">
+    <div className="min-h-screen bg-base text-snow font-sans flex flex-col">
       <Navbar />
       <main className="flex-1">
         <AnimatePresence mode="wait">

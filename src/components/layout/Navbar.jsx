@@ -28,12 +28,10 @@ export default function Navbar() {
           : 'bg-transparent'
       }`}>
         <Link to="/" className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg gradient-brand flex items-center justify-center text-[12px] font-bold text-[#0D1B2E]">
-            TW
-          </div>
+          <img src="/icon-192.png" alt="Testwise Logo" className="w-8 h-8 rounded-lg object-cover" />
           <div>
             <div className="text-[15px] font-semibold tracking-tight leading-none text-snow">
-              Test<span className="text-teal-bright">wise</span>
+              Test<span className="text-teal">wise</span>
             </div>
             <div className="text-[10px] text-fog tracking-[0.1em] uppercase leading-none mt-0.5">
               by {SITE.parent}
@@ -45,7 +43,7 @@ export default function Navbar() {
           {LINKS.map(l => (
             <NavLink key={l.to} to={l.to}
               className={({ isActive }) =>
-                `text-[13px] font-medium transition-colors duration-150 ${isActive ? 'text-teal-bright' : 'text-mist hover:text-snow'}`
+                `text-[13px] font-medium transition-colors duration-150 ${isActive ? 'text-teal' : 'text-mist hover:text-snow'}`
               }>{l.label}</NavLink>
           ))}
         </nav>
@@ -65,7 +63,7 @@ export default function Navbar() {
           {LINKS.map(l => (
             <NavLink key={l.to} to={l.to} onClick={() => setOpen(false)}
               className={({ isActive }) =>
-                `text-[15px] font-medium ${isActive ? 'text-teal-bright' : 'text-mist'}`
+                `text-[15px] font-medium ${isActive ? 'text-teal' : 'text-mist'}`
               }>{l.label}</NavLink>
           ))}
           <Link to="/contact" onClick={() => setOpen(false)} className="btn-primary justify-center mt-1 text-[14px]">
