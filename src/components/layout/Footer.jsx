@@ -1,63 +1,78 @@
 import { Link } from 'react-router-dom'
 import { Mail, Linkedin, Globe, MapPin } from 'lucide-react'
+import { LogoFull } from '@/components/ui/Logo'
 import { SITE } from '@/lib/data'
+
+const NAV_LINKS = [
+  { to: '/pipeline',      label: 'The pipeline' },
+  { to: '/how-it-works',  label: 'How it works' },
+  { to: '/industries',    label: 'Industries' },
+  { to: '/pricing',       label: 'Pricing' },
+  { to: '/contact',       label: 'Contact' },
+]
+
+const CONTACT_LINKS = [
+  { href: `mailto:${SITE.email}`,    Icon: Mail,     label: SITE.email },
+  { href: SITE.linkedin,             Icon: Linkedin,  label: 'LinkedIn', external: true },
+  { href: SITE.parentUrl,            Icon: Globe,     label: SITE.parent, external: true },
+]
 
 export default function Footer() {
   return (
-    <footer className="bg-surface border-t border-border mt-auto">
-      <div className="max-w-6xl mx-auto px-6 lg:px-10 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+    <footer className="bg-surface border-t border-border" role="contentinfo">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-[1.6fr_1fr_1fr] gap-12 mb-12">
+
           {/* Brand */}
-          <div className="md:col-span-2">
-            <div className="flex items-center gap-3 mb-4">
-              <img src="/icon-192.png" alt="Testwise Logo" className="w-16 h-16 rounded-lg object-cover" />
-              <div>
-                <div className="text-[15px] font-semibold tracking-tight text-snow">Test<span className="text-teal">wise</span></div>
-                <div className="text-[10px] text-fog tracking-widest uppercase mt-0.5">by {SITE.parent}</div>
-              </div>
-            </div>
-            <p className="text-[13px] text-mist leading-relaxed max-w-xs">
+          <div>
+            <Link to="/" aria-label="Testwise home" className="inline-block mb-5">
+              <LogoFull size={32}/>
+            </Link>
+            <p className="text-[15px] text-mist leading-relaxed max-w-xs font-light">
               Bespoke autonomous QA, engineered around your stack, your team, and your compliance requirements.
             </p>
-            <div className="flex items-center gap-1.5 mt-4 text-[12px] text-fog">
-              <MapPin size={11}/> {SITE.location}
+            <div className="flex items-center gap-2 mt-5 text-[14px] text-fog">
+              <MapPin size={13}/> {SITE.location}
             </div>
           </div>
 
           {/* Product */}
           <div>
-            <div className="text-[10px] font-semibold tracking-[0.12em] uppercase text-fog mb-4">Product</div>
-            {[
-              { to: '/pipeline',      label: 'The pipeline' },
-              { to: '/how-it-works',  label: 'How it works' },
-              { to: '/industries',    label: 'Industries' },
-              { to: '/pricing',       label: 'Pricing' },
-            ].map(l => (
-              <Link key={l.to} to={l.to} className="block text-[13px] text-mist hover:text-snow transition-colors mb-2.5">{l.label}</Link>
+            <div className="text-[11px] font-semibold tracking-[0.12em] uppercase text-fog mb-5">Product</div>
+            {NAV_LINKS.map(l => (
+              <Link key={l.to} to={l.to}
+                className="block text-[15px] text-mist hover:text-snow transition-colors mb-3 font-light">
+                {l.label}
+              </Link>
             ))}
           </div>
 
           {/* Contact */}
           <div>
-            <div className="text-[10px] font-semibold tracking-[0.12em] uppercase text-fog mb-4">Contact</div>
-            <a href={`mailto:${SITE.email}`} className="flex items-center gap-2 text-[13px] text-mist hover:text-snow transition-colors mb-3">
-              <Mail size={13}/>{SITE.email}
-            </a>
-            <a href={SITE.linkedin} target="_blank" rel="noopener" className="flex items-center gap-2 text-[13px] text-mist hover:text-snow transition-colors mb-3">
-              <Linkedin size={13}/>LinkedIn
-            </a>
-            <a href={SITE.parentUrl} target="_blank" rel="noopener" className="flex items-center gap-2 text-[13px] text-mist hover:text-snow transition-colors">
-              <Globe size={13}/>{SITE.parent}
-            </a>
+            <div className="text-[11px] font-semibold tracking-[0.12em] uppercase text-fog mb-5">Contact</div>
+            {CONTACT_LINKS.map(({ href, Icon, label, external }) => (
+              <a key={label} href={href}
+                {...(external ? { target:'_blank', rel:'noopener noreferrer' } : {})}
+                className="flex items-center gap-2.5 text-[15px] text-mist hover:text-snow transition-colors mb-4 font-light">
+                <Icon size={14} className="text-teal flex-shrink-0"/>
+                {label}
+              </a>
+            ))}
           </div>
         </div>
 
         <div className="divider mb-6"/>
+
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-          <p className="text-[12px] text-fog">© {new Date().getFullYear()} Advanse-IT Pty Ltd. All rights reserved.</p>
-          <p className="text-[12px] text-fog">
+          <p className="text-[13px] text-fog">
+            © {new Date().getFullYear()} Advanse-IT Pty Ltd. All rights reserved.
+          </p>
+          <p className="text-[13px] text-fog">
             Testwise is a product of{' '}
-            <a href={SITE.parentUrl} target="_blank" rel="noopener" className="text-teal hover:opacity-80 transition-opacity">{SITE.parent}</a>
+            <a href={SITE.parentUrl} target="_blank" rel="noopener noreferrer"
+              className="text-teal hover:opacity-80 transition-opacity">
+              {SITE.parent}
+            </a>
           </p>
         </div>
       </div>

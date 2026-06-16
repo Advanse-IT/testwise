@@ -8,6 +8,7 @@ import SectionHeader from '@/components/ui/SectionHeader'
 import Reveal from '@/components/ui/Reveal'
 import { Divider } from '@/components/ui/Divider'
 import { GATE_MODES } from '@/lib/data'
+import { usePageMeta } from '@/hooks/usePageMeta'
 
 const STAGE_ICONS = [FileText, ListChecks, Code2, Play, BugOff, TicketCheck, BarChart3, FileCheck2]
 
@@ -98,6 +99,7 @@ function StageCard({ stage, desc, isGated, onToggle, index }) {
 }
 
 export default function Pipeline() {
+  usePageMeta({ title:'The Pipeline', description:'Explore the Testwise 8-stage autonomous QA pipeline. Configure human approval gates per stage to match your risk profile and compliance requirements.', canonical:'/pipeline' })
   const [activeMode, setActiveMode] = useState('full')
   const [gates, setGates] = useState([])
 
@@ -177,7 +179,7 @@ export default function Pipeline() {
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <Reveal>
             <div className="eyebrow">Tool compatibility</div>
-            <h2 className="text-title-xl text-snow mb-5">Works with your existing stack — not ours.</h2>
+            <h2 className="text-h1 text-snow mb-5">Works with your existing stack — not ours.</h2>
             <p className="text-body-xl text-mist font-light leading-relaxed mb-5">
               Testwise does not mandate new tools. The pipeline integrates with whatever you already run across every stage.
             </p>
@@ -208,7 +210,7 @@ export default function Pipeline() {
 
       <section className="py-16 px-6 text-center max-w-xl mx-auto">
         <Reveal>
-          <h2 className="text-title-lg text-snow mb-4">Want to see how this maps to your stack?</h2>
+          <h2 className="text-h2 text-snow mb-4">Want to see how this maps to your stack?</h2>
           <p className="text-body-xl text-mist font-light mb-7">The first call is a discovery session — we walk through your environment and show you exactly what the pipeline would look like.</p>
           <Link to="/contact" className="btn-primary inline-flex">Book a discovery call <ArrowRight size={16}/></Link>
         </Reveal>
@@ -216,3 +218,5 @@ export default function Pipeline() {
     </PageWrapper>
   )
 }
+
+// SEO — added at module level via side-effect, component calls hook internally

@@ -5,6 +5,7 @@ import SectionHeader from '@/components/ui/SectionHeader'
 import Reveal from '@/components/ui/Reveal'
 import { Divider } from '@/components/ui/Divider'
 import { HOW_STEPS } from '@/lib/data'
+import { usePageMeta } from '@/hooks/usePageMeta'
 
 const STEP_ICONS = [Search, PlugZap, SlidersHorizontal, Rocket, TrendingUp]
 const ASSURANCE_ICONS = [Clock, ShieldCheck, RefreshCw]
@@ -15,6 +16,7 @@ const ASSURANCE = [
 ]
 
 export default function HowItWorks() {
+  usePageMeta({ title:'How It Works', description:'Testwise implementation takes 2-3 weeks from discovery to first autonomous sprint. See the five-step process.', canonical:'/how-it-works' })
   return (
     <PageWrapper>
       <section className="pt-32 pb-16 px-6 lg:px-12 max-w-7xl mx-auto">
@@ -34,7 +36,8 @@ export default function HowItWorks() {
           <div className="flex flex-col gap-0">
             {HOW_STEPS.map((step, i) => {
               const StepIcon = STEP_ICONS[i]
-              return (
+              usePageMeta({ title:'How It Works', description:'Testwise implementation takes 2-3 weeks from discovery to first autonomous sprint. See the five-step process.', canonical:'/how-it-works' })
+  return (
                 <Reveal key={i} delay={i*0.1}>
                   <div className="relative flex gap-8 md:gap-12 pb-14 last:pb-0">
                     <div className="flex-shrink-0 w-10 h-10 rounded-full border border-teal/30 bg-teal/10 flex items-center justify-center z-10">
@@ -42,7 +45,7 @@ export default function HowItWorks() {
                     </div>
                     <div className="flex-1 pt-1">
                       <div className="text-label text-fog uppercase mb-2">{step.num}</div>
-                      <h3 className="text-title-md text-snow mb-3">{step.title}</h3>
+                      <h3 className="text-h3 text-snow mb-3">{step.title}</h3>
                       <p className="text-body-xl text-mist font-light leading-relaxed max-w-lg">{step.body}</p>
                     </div>
                   </div>
@@ -58,18 +61,19 @@ export default function HowItWorks() {
       <section className="py-20 px-6 lg:px-12 max-w-7xl mx-auto">
         <Reveal className="mb-12">
           <div className="eyebrow">What you can expect</div>
-          <h2 className="text-title-xl text-snow max-w-xl">Built to give you confidence at every step.</h2>
+          <h2 className="text-h1 text-snow max-w-xl">Built to give you confidence at every step.</h2>
         </Reveal>
         <div className="grid md:grid-cols-3 gap-5">
           {ASSURANCE.map((item, i) => {
             const AIcon = ASSURANCE_ICONS[i]
-            return (
+            usePageMeta({ title:'How It Works', description:'Testwise implementation takes 2-3 weeks from discovery to first autonomous sprint. See the five-step process.', canonical:'/how-it-works' })
+  return (
               <Reveal key={i} delay={i*0.1}>
                 <div className="card-accent p-8 h-full flex flex-col">
                   <div className="w-11 h-11 rounded-xl bg-teal/10 border border-teal/15 flex items-center justify-center mb-5">
                     <AIcon size={19} className="text-teal"/>
                   </div>
-                  <h3 className="text-title-md text-snow mb-3">{item.title}</h3>
+                  <h3 className="text-h3 text-snow mb-3">{item.title}</h3>
                   <p className="text-body-lg text-mist leading-relaxed flex-1">{item.body}</p>
                 </div>
               </Reveal>
@@ -82,7 +86,7 @@ export default function HowItWorks() {
 
       <section className="py-16 px-6 text-center max-w-xl mx-auto">
         <Reveal>
-          <h2 className="text-title-lg text-snow mb-4">Ready to map out your implementation?</h2>
+          <h2 className="text-h2 text-snow mb-4">Ready to map out your implementation?</h2>
           <p className="text-body-xl text-mist font-light mb-7">The first call is a discovery session. We walk through your environment and show you exactly what the pipeline would look like for your team.</p>
           <Link to="/contact" className="btn-primary inline-flex">Book a discovery call <ArrowRight size={16}/></Link>
         </Reveal>

@@ -7,6 +7,7 @@ import SectionHeader from '@/components/ui/SectionHeader'
 import Reveal from '@/components/ui/Reveal'
 import { Divider } from '@/components/ui/Divider'
 import { PRICING, FAQS } from '@/lib/data'
+import { usePageMeta } from '@/hooks/usePageMeta'
 
 function FaqItem({ q, a, index }) {
   const [open, setOpen] = useState(false)
@@ -56,7 +57,7 @@ export default function Pricing() {
                   </div>
                 )}
                 <div className="text-label text-teal mb-2">{plan.tier}</div>
-                <h3 className="text-title-md text-snow mb-3">{plan.name}</h3>
+                <h3 className="text-h3 text-snow mb-3">{plan.name}</h3>
                 <p className="text-body-lg text-mist font-light leading-relaxed mb-6">{plan.desc}</p>
                 <div className="mb-1">
                   <span className="text-[14px] text-fog align-super">$</span>
@@ -99,7 +100,7 @@ export default function Pricing() {
 
       <section className="py-16 px-6 text-center max-w-xl mx-auto">
         <Reveal>
-          <h2 className="text-title-lg text-snow mb-4">Not sure which engagement is right?</h2>
+          <h2 className="text-h2 text-snow mb-4">Not sure which engagement is right?</h2>
           <p className="text-body-xl text-mist font-light mb-7">The QA Maturity Audit is the natural starting point. It gives you a clear picture before any commitment to implementation.</p>
           <Link to="/contact" className="btn-primary inline-flex">Book a discovery call <ArrowRight size={16}/></Link>
         </Reveal>

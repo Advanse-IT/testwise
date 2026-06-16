@@ -18,7 +18,7 @@ export default function AIOrb({ className = '' }) {
           }}/>
       ))}
       {/* Core */}
-      <div className="relative z-10 w-20 h-24 rounded-full gradient-brand flex items-center justify-center shadow-glow">
+      <div className="relative z-10 w-20 h-20 rounded-full gradient-brand flex items-center justify-center shadow-glow">
         <span className="text-[#0D1B2E] font-bold text-lg tracking-tight">AI</span>
       </div>
       {/* Orbiting dots */}

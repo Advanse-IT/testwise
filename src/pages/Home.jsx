@@ -11,6 +11,7 @@ import { useCountUp } from '@/hooks/useCountUp'
 import { useTypewriter } from '@/hooks/useTypewriter'
 import { useInView } from '@/hooks/useInView'
 import { PROOF, BESPOKE_PILLARS } from '@/lib/data'
+import { usePageMeta } from '@/hooks/usePageMeta'
 
 const TYPED = [
   'built around your stack.',
@@ -56,6 +57,7 @@ function StatCard({ value, suffix, label, index, isOne }) {
 }
 
 export default function Home() {
+  usePageMeta({ canonical: '/' })
   const typed = useTypewriter(TYPED, { speed:55, pause:2400, deleteSpeed:28 })
 
   return (
@@ -138,7 +140,7 @@ export default function Home() {
       <section className="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
         <Reveal>
           <div className="eyebrow">What Testwise automates</div>
-          <h2 className="text-title-xl text-snow mb-4 max-w-2xl">
+          <h2 className="text-h1 text-snow mb-4 max-w-2xl">
             Every stage of QA. End to end. Autonomously.
           </h2>
           <p className="text-body-xl text-mist font-light max-w-xl mb-14">
@@ -158,7 +160,7 @@ export default function Home() {
               {PIPELINE.map(({ Icon, label, sub }, i) => (
                 <div key={i} className="flex items-center flex-shrink-0">
                   <div className="group flex flex-col items-center px-7 py-10 transition-colors duration-200 hover:bg-teal/5">
-                    <div className="w-16 h-16 rounded-xl bg-raised border border-border flex items-center justify-center mb-4
+                    <div className="w-12 h-12 rounded-xl bg-raised border border-border flex items-center justify-center mb-4
                       group-hover:border-teal/30 group-hover:shadow-glow-teal transition-all duration-300">
                       <Icon size={20} className="text-teal/60 group-hover:text-teal transition-colors duration-200"/>
                     </div>
@@ -191,7 +193,7 @@ export default function Home() {
       <section className="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
         <Reveal>
           <div className="eyebrow">The Testwise approach</div>
-          <h2 className="text-title-xl text-snow mb-4 max-w-xl">Every pipeline is unique to its client.</h2>
+          <h2 className="text-h1 text-snow mb-4 max-w-xl">Every pipeline is unique to its client.</h2>
           <p className="text-body-xl text-mist font-light max-w-lg mb-14">
             There is no off-the-shelf product. Every Testwise engagement is designed from discovery — built around your stack, your team, and your processes.
           </p>
@@ -206,7 +208,7 @@ export default function Home() {
                   <div className="w-11 h-11 rounded-xl bg-teal/10 border border-teal/15 flex items-center justify-center mb-5">
                     <PillarIcon size={19} className="text-teal"/>
                   </div>
-                  <h3 className="text-title-md text-snow mb-3">{p.title}</h3>
+                  <h3 className="text-h3 text-snow mb-3">{p.title}</h3>
                   <p className="text-body-lg text-mist leading-relaxed flex-1">{p.body}</p>
                 </div>
               </Reveal>
@@ -226,7 +228,7 @@ export default function Home() {
               aria-hidden="true"/>
             <div className="relative z-10">
               <div className="eyebrow mb-6">Production evidence</div>
-              <blockquote className="text-title-lg text-snow mb-12 max-w-3xl leading-snug">
+              <blockquote className="text-h2 text-snow mb-12 max-w-3xl leading-snug">
                 "{PROOF.quote}"
               </blockquote>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
@@ -251,7 +253,7 @@ export default function Home() {
       <section className="py-28 px-6 lg:px-12 text-center relative overflow-hidden">
         <div className="bg-depth-subtle absolute inset-0 pointer-events-none" aria-hidden="true"/>
         <Reveal className="relative z-10 max-w-2xl mx-auto">
-          <h2 className="text-title-xl text-snow mb-5">
+          <h2 className="text-h1 text-snow mb-5">
             Ready to see what autonomous QA looks like for your stack?
           </h2>
           <p className="text-body-xl text-mist font-light mb-10">
