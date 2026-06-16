@@ -54,10 +54,10 @@ export default function Contact() {
         <div className="grid-watermark" aria-hidden="true"/>
         <Reveal className="relative z-10 max-w-2xl mx-auto">
           <div className="inline-flex items-center gap-2 border border-teal/25 rounded-full px-4 py-1.5 mb-6 bg-teal/5">
-            <span className="w-1.5 h-1.5 rounded-full bg-teal-bright animate-pulse-dot" aria-hidden="true"/>
-            <span className="text-[11px] font-semibold text-teal-bright tracking-widest uppercase">Let&apos;s Talk</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse-slow" aria-hidden="true"/>
+            <span className="text-[11px] font-semibold text-teal tracking-widest uppercase">Let&apos;s Talk</span>
           </div>
-          <h1 className="text-display-xl text-snow mb-4">
+          <h1 className="text-hero text-snow mb-4">
             Ready to Advance<br/>
             <span className="gradient-text">Your QA?</span>
           </h1>
@@ -81,7 +81,7 @@ export default function Contact() {
             <Reveal delay={0.05}>
               <div className="flex items-start gap-4 card p-4">
                 <div className="w-10 h-10 rounded-full bg-teal/10 border border-teal/20 flex items-center justify-center flex-shrink-0">
-                  <MapPin size={16} className="text-teal-bright"/>
+                  <MapPin size={16} className="text-teal"/>
                 </div>
                 <div>
                   <div className="text-[14px] font-semibold text-snow mb-0.5">Headquarters</div>
@@ -94,7 +94,7 @@ export default function Contact() {
               <a href={`mailto:${SITE.email}`}
                 className="flex items-start gap-4 card card-hover p-4 group">
                 <div className="w-10 h-10 rounded-full bg-teal/10 border border-teal/20 flex items-center justify-center flex-shrink-0 group-hover:border-teal/40 transition-colors">
-                  <Mail size={16} className="text-teal-bright"/>
+                  <Mail size={16} className="text-teal"/>
                 </div>
                 <div>
                   <div className="text-[14px] font-semibold text-snow mb-0.5">Email Us</div>
@@ -107,7 +107,7 @@ export default function Contact() {
               <a href="tel:+61481261679"
                 className="flex items-start gap-4 card card-hover p-4 group">
                 <div className="w-10 h-10 rounded-full bg-teal/10 border border-teal/20 flex items-center justify-center flex-shrink-0 group-hover:border-teal/40 transition-colors">
-                  <Phone size={16} className="text-teal-bright"/>
+                  <Phone size={16} className="text-teal"/>
                 </div>
                 <div>
                   <div className="text-[14px] font-semibold text-snow mb-0.5">Call Us</div>
@@ -122,7 +122,7 @@ export default function Contact() {
                 <div className="grid-watermark opacity-50" aria-hidden="true"/>
                 <div className="relative z-10">
                   <div className="flex items-center gap-2 mb-4">
-                    <CheckCircle size={16} className="text-teal-bright"/>
+                    <CheckCircle size={16} className="text-teal"/>
                     <span className="text-[14px] font-semibold text-snow">Our Promise</span>
                   </div>
                   <ul className="flex flex-col gap-2.5">
@@ -151,8 +151,8 @@ export default function Contact() {
                       animate={{ opacity: 1, scale: 1 }}
                       className="flex flex-col items-center justify-center py-16 text-center"
                     >
-                      <div className="w-16 h-16 rounded-full bg-teal/15 border border-teal/30 flex items-center justify-center mb-5">
-                        <CheckCircle size={28} className="text-teal-bright"/>
+                      <div className="w-16 h-24 rounded-full bg-teal/15 border border-teal/30 flex items-center justify-center mb-5">
+                        <CheckCircle size={28} className="text-teal"/>
                       </div>
                       <h3 className="text-[20px] font-bold text-snow mb-2">Message sent!</h3>
                       <p className="text-[14px] text-mist max-w-xs">

@@ -10,9 +10,9 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 rounded-lg gradient-brand flex items-center justify-center text-xs font-bold text-white">TW</div>
+              <img src="/icon-192.png" alt="Testwise Logo" className="w-16 h-16 rounded-lg object-cover" />
               <div>
-                <div className="text-[15px] font-semibold tracking-tight text-snow">Test<span className="text-teal-bright">wise</span></div>
+                <div className="text-[15px] font-semibold tracking-tight text-snow">Test<span className="text-teal">wise</span></div>
                 <div className="text-[10px] text-fog tracking-widest uppercase mt-0.5">by {SITE.parent}</div>
               </div>
             </div>
@@ -57,7 +57,7 @@ export default function Footer() {
           <p className="text-[12px] text-fog">© {new Date().getFullYear()} Advanse-IT Pty Ltd. All rights reserved.</p>
           <p className="text-[12px] text-fog">
             Testwise is a product of{' '}
-            <a href={SITE.parentUrl} target="_blank" rel="noopener" className="text-teal-bright hover:opacity-80 transition-opacity">{SITE.parent}</a>
+            <a href={SITE.parentUrl} target="_blank" rel="noopener" className="text-teal hover:opacity-80 transition-opacity">{SITE.parent}</a>
           </p>
         </div>
       </div>
