@@ -23,6 +23,15 @@ export default function NavbarNew() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Close mobile menu when clicking outside or on a link
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') setMobileOpen(false)
+    }
+    window.addEventListener('keydown', handleEscape)
+    return () => window.removeEventListener('keydown', handleEscape)
+  }, [])
+
   return (
     <>
       <header
@@ -33,32 +42,32 @@ export default function NavbarNew() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo and Brand */}
-            <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal to-cyan-500 p-1 flex items-center justify-center">
-                <InteractiveTestIcon className="w-8 h-8" />
+            <Link to="/" className="flex items-center gap-2 sm:gap-3 group flex-shrink-0">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-teal to-cyan-500 p-1 flex items-center justify-center flex-shrink-0">
+                <InteractiveTestIcon className="w-8 h-8 sm:w-10 sm:h-10" />
               </div>
               <div className="hidden sm:block">
-                <div className="text-sm font-bold tracking-tight text-slate-50 group-hover:text-teal transition-colors">
+                <div className="text-sm sm:text-base font-bold tracking-tight text-slate-50 group-hover:text-teal transition-colors">
                   Testwise
                 </div>
-                <div className="text-xs text-slate-400 tracking-wider uppercase">
+                <div className="text-xs text-slate-400 tracking-wider uppercase font-medium">
                   by {SITE.parent}
                 </div>
               </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-1">
+            <nav className="hidden md:flex items-center gap-2 lg:gap-4">
               {LINKS.map((link) => (
                 <NavLink
                   key={link.to}
                   to={link.to}
                   className={({ isActive }) =>
-                    `px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                    `px-3 lg:px-4 py-2 text-sm lg:text-base font-medium rounded-md transition-all duration-200 ${
                       isActive
-                        ? 'text-teal bg-teal/10'
+                        ? 'text-teal bg-teal/10 border border-teal/30'
                         : 'text-slate-300 hover:text-slate-50 hover:bg-slate-800/50'
                     }`
                   }
@@ -69,70 +78,107 @@ export default function NavbarNew() {
             </nav>
 
             {/* CTA and Mobile Menu Button */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 lg:gap-4 ml-auto">
               <Link to="/contact" className="hidden sm:block">
                 <Button
                   variant="default"
                   size="sm"
-                  className="bg-teal hover:bg-teal/90 text-slate-950 font-semibold"
+                  className="bg-teal hover:bg-teal/90 text-slate-950 font-semibold text-xs sm:text-sm"
                 >
                   Book a call
                 </Button>
               </Link>
+              {/* Mobile Menu Button - Larger and positioned to the right */}
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="md:hidden p-2 rounded-md text-slate-300 hover:text-slate-50 hover:bg-slate-800/50 transition-colors"
+                className="md:hidden p-2.5 sm:p-3 rounded-lg text-slate-300 hover:text-slate-50 hover:bg-slate-800/80 transition-all duration-200 flex-shrink-0"
                 aria-label="Toggle menu"
+                aria-expanded={mobileOpen}
               >
-                {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+                {mobileOpen ? (
+                  <X size={28} strokeWidth={2} />
+                ) : (
+                  <Menu size={28} strokeWidth={2} />
+                )}
               </button>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Improved Design */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="fixed top-16 inset-x-0 z-40 bg-slate-950 border-b border-slate-800 md:hidden"
-          >
-            <div className="px-4 py-4 space-y-2">
-              {LINKS.map((link) => (
-                <NavLink
-                  key={link.to}
-                  to={link.to}
-                  onClick={() => setMobileOpen(false)}
-                  className={({ isActive }) =>
-                    `block px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                      isActive
-                        ? 'text-teal bg-teal/10'
-                        : 'text-slate-300 hover:text-slate-50 hover:bg-slate-800/50'
-                    }`
-                  }
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setMobileOpen(false)}
+              className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm md:hidden"
+            />
+
+            {/* Mobile Menu Panel */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+              className="fixed top-16 left-0 right-0 z-40 bg-slate-950 border-b border-slate-800 md:hidden"
+            >
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-3">
+                {/* Navigation Links */}
+                {LINKS.map((link, index) => (
+                  <motion.div
+                    key={link.to}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05, duration: 0.2 }}
+                  >
+                    <NavLink
+                      to={link.to}
+                      onClick={() => setMobileOpen(false)}
+                      className={({ isActive }) =>
+                        `block px-4 py-3 rounded-lg text-base font-semibold transition-all duration-200 ${
+                          isActive
+                            ? 'text-teal bg-teal/15 border border-teal/40'
+                            : 'text-slate-200 hover:text-slate-50 hover:bg-slate-800/60'
+                        }`
+                      }
+                    >
+                      {link.label}
+                    </NavLink>
+                  </motion.div>
+                ))}
+
+                {/* Divider */}
+                <div className="my-2 border-t border-slate-800" />
+
+                {/* CTA Button */}
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: LINKS.length * 0.05, duration: 0.2 }}
                 >
-                  {link.label}
-                </NavLink>
-              ))}
-              <Link
-                to="/contact"
-                onClick={() => setMobileOpen(false)}
-                className="block w-full"
-              >
-                <Button
-                  variant="default"
-                  size="sm"
-                  className="w-full bg-teal hover:bg-teal/90 text-slate-950 font-semibold"
-                >
-                  Book a call
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
+                  <Link
+                    to="/contact"
+                    onClick={() => setMobileOpen(false)}
+                    className="block w-full"
+                  >
+                    <Button
+                      variant="default"
+                      size="sm"
+                      className="w-full bg-teal hover:bg-teal/90 text-slate-950 font-bold text-base py-3"
+                    >
+                      Book a discovery call
+                    </Button>
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

@@ -2,6 +2,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { useEffect } from 'react'
 import NavbarNew from '@/components/layout/NavbarNew'
+import ScrollToTop from '@/components/ui/ScrollToTop'
 import { trackPageView } from '@/lib/analytics'
 import Footer from '@/components/layout/Footer'
 import Home from '@/pages/Home'
@@ -21,6 +22,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 font-sans flex flex-col">
+      <ScrollToTop />
       <NavbarNew />
       <main className="flex-1">
         <AnimatePresence mode="wait">
