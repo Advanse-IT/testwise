@@ -132,7 +132,7 @@ export default function Pipeline() {
 
   return (
     <PageWrapper>
-      <section className="pt-32 pb-16 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="pt-32 pb-16 px-5 sm:px-8 lg:px-12 max-w-7xl mx-auto">
         <SectionHeader
           eyebrow="The pipeline"
           title="Eight stages. Fully autonomous."
@@ -142,7 +142,7 @@ export default function Pipeline() {
 
       <div className="tw-divider-glow"/>
 
-      <section className="py-16 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="py-16 px-5 sm:px-8 lg:px-12 max-w-7xl mx-auto">
         {/* Controls */}
         <Reveal className="flex flex-wrap items-center justify-between gap-5 mb-6">
           <div className="flex flex-wrap gap-2">
@@ -202,8 +202,8 @@ export default function Pipeline() {
 
       <Divider/>
 
-      <section className="py-20 px-6 lg:px-12 max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+      <section className="py-20 px-5 sm:px-8 lg:px-12 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-start">
           <Reveal>
             <div className="eyebrow-label">Tool compatibility</div>
             <h2 className="text-title-xl text-white mb-5">Works with your existing stack — not ours.</h2>
@@ -232,7 +232,7 @@ export default function Pipeline() {
 
       <Divider/>
 
-      <section className="py-16 px-6 text-center max-w-xl mx-auto">
+      <section className="py-16 px-5 text-center max-w-xl mx-auto">
         <Reveal>
           <h2 className="text-title-lg text-white mb-4">Want to see how this maps to your stack?</h2>
           <p className="text-body-xl text-white/55 font-light mb-8">

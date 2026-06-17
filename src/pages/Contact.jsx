@@ -68,7 +68,7 @@ export default function Contact() {
   return (
     <PageWrapper>
       {/* Hero */}
-      <section className="pt-24 pb-16 px-6 lg:px-12 text-center relative overflow-hidden">
+      <section className="pt-24 pb-16 px-5 sm:px-8 lg:px-12 text-center relative overflow-hidden">
         <div className="bg-depth-subtle absolute inset-0 pointer-events-none" aria-hidden="true"/>
         <Reveal className="relative z-10 max-w-2xl mx-auto">
           <Badge variant="default" className="mb-6 gap-2">
@@ -88,8 +88,8 @@ export default function Contact() {
       <div className="tw-divider-glow"/>
 
       {/* Main */}
-      <section className="py-16 px-6 lg:px-12 max-w-6xl mx-auto">
-        <div className="grid lg:grid-cols-[320px_1fr] gap-10 items-start">
+      <section className="py-16 px-5 sm:px-8 lg:px-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-[300px_1fr] gap-10 items-start">
 
           {/* Left */}
           <div className="space-y-4">
@@ -171,7 +171,7 @@ export default function Contact() {
                     </motion.div>
                   ) : (
                     <motion.form key="form" onSubmit={handleSubmit} noValidate className="space-y-5">
-                      <div className="grid sm:grid-cols-2 gap-5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                         <div className="space-y-2">
                           <Label htmlFor="name">Full Name *</Label>
                           <Input
@@ -196,7 +196,7 @@ export default function Contact() {
                         </div>
                       </div>
 
-                      <div className="grid sm:grid-cols-2 gap-5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                         <div className="space-y-2">
                           <Label htmlFor="company">Company</Label>
                           <Input

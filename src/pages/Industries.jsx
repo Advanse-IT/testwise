@@ -30,7 +30,7 @@ export default function Industries() {
 
   return (
     <PageWrapper>
-      <section className="pt-32 pb-16 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="pt-32 pb-16 px-5 sm:px-8 lg:px-12 max-w-7xl mx-auto">
         <SectionHeader
           eyebrow="Industries"
           title="Built for teams that cannot slow down for QA."
@@ -40,7 +40,7 @@ export default function Industries() {
 
       <div className="tw-divider-glow"/>
 
-      <section className="py-20 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="py-20 px-5 sm:px-8 lg:px-12 max-w-7xl mx-auto">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {VERTICALS.map((v, i) => {
             const VIcon = V_ICONS[v.icon]
@@ -69,7 +69,7 @@ export default function Industries() {
 
       <Divider/>
 
-      <section className="py-20 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="py-20 px-5 sm:px-8 lg:px-12 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-14 items-start">
           <Reveal>
             <div className="eyebrow-label">Compliance & governance</div>
@@ -102,7 +102,7 @@ export default function Industries() {
 
       <Divider/>
 
-      <section className="py-16 px-6 text-center max-w-xl mx-auto">
+      <section className="py-16 px-5 text-center max-w-xl mx-auto">
         <Reveal>
           <h2 className="text-title-lg text-white mb-4">Not sure which configuration applies to your sector?</h2>
           <p className="text-body-xl text-white/55 font-light mb-8">

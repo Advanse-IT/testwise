@@ -21,7 +21,7 @@ const CONTACT = [
 export default function Footer() {
   return (
     <footer className="bg-[hsl(220_28%_9%)] border-t border-white/[0.07]" role="contentinfo">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-10">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-16 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-[1.8fr_1fr_1fr] gap-12 mb-12">
 
           <div>

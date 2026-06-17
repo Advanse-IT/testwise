@@ -29,7 +29,7 @@ export default function HowItWorks() {
 
   return (
     <PageWrapper>
-      <section className="pt-32 pb-16 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="pt-32 pb-16 px-5 sm:px-8 lg:px-12 max-w-7xl mx-auto">
         <SectionHeader
           eyebrow="Implementation"
           title="Up and running in one sprint."
@@ -39,7 +39,7 @@ export default function HowItWorks() {
 
       <div className="tw-divider-glow"/>
 
-      <section className="py-20 px-6 lg:px-12 max-w-4xl mx-auto">
+      <section className="py-20 px-5 sm:px-8 lg:px-12 max-w-4xl mx-auto">
         <div className="relative">
           <div className="absolute left-5 top-8 bottom-8 w-px bg-gradient-to-b from-brand-teal/40 via-brand-teal/15 to-transparent hidden md:block" aria-hidden="true"/>
           <div className="flex flex-col gap-0">
@@ -66,7 +66,7 @@ export default function HowItWorks() {
 
       <Divider/>
 
-      <section className="py-20 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="py-20 px-5 sm:px-8 lg:px-12 max-w-7xl mx-auto">
         <Reveal className="mb-12">
           <div className="eyebrow-label">What you can expect</div>
           <h2 className="text-title-xl text-white">Built to give you confidence at every step.</h2>
@@ -88,7 +88,7 @@ export default function HowItWorks() {
 
       <Divider/>
 
-      <section className="py-16 px-6 text-center max-w-xl mx-auto">
+      <section className="py-16 px-5 text-center max-w-xl mx-auto">
         <Reveal>
           <h2 className="text-title-lg text-white mb-4">Ready to map out your implementation?</h2>
           <p className="text-body-xl text-white/55 font-light mb-8">

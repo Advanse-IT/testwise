@@ -11,29 +11,33 @@ import Pricing from '@/pages/Pricing'
 import Contact from '@/pages/Contact'
 import NotFound from '@/pages/NotFound'
 import { useGoogleAnalytics } from '@/hooks/useGoogleAnalytics'
+import { useScrollToTop } from '@/hooks/useScrollToTop'
 
 export default function App() {
   const location = useLocation()
+
+  // Fires on every route change — must be inside BrowserRouter context
+  useScrollToTop()
   useGoogleAnalytics()
 
   return (
     <TooltipProvider delayDuration={300}>
       <div className="min-h-screen bg-background text-foreground font-sans flex flex-col antialiased">
-        <Navbar/>
+        <Navbar />
         <main className="flex-1">
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
-              <Route path="/"             element={<Home/>}/>
-              <Route path="/pipeline"     element={<Pipeline/>}/>
-              <Route path="/how-it-works" element={<HowItWorks/>}/>
-              <Route path="/industries"   element={<Industries/>}/>
-              <Route path="/pricing"      element={<Pricing/>}/>
-              <Route path="/contact"      element={<Contact/>}/>
-              <Route path="*"             element={<NotFound/>}/>
+              <Route path="/"             element={<Home />} />
+              <Route path="/pipeline"     element={<Pipeline />} />
+              <Route path="/how-it-works" element={<HowItWorks />} />
+              <Route path="/industries"   element={<Industries />} />
+              <Route path="/pricing"      element={<Pricing />} />
+              <Route path="/contact"      element={<Contact />} />
+              <Route path="*"             element={<NotFound />} />
             </Routes>
           </AnimatePresence>
         </main>
-        <Footer/>
+        <Footer />
       </div>
     </TooltipProvider>
   )

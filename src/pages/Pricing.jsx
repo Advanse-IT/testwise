@@ -22,7 +22,7 @@ export default function Pricing() {
 
   return (
     <PageWrapper>
-      <section className="pt-32 pb-16 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="pt-32 pb-16 px-5 sm:px-8 lg:px-12 max-w-7xl mx-auto">
         <SectionHeader
           center
           eyebrow="Pricing"
@@ -33,30 +33,35 @@ export default function Pricing() {
 
       <div className="tw-divider-glow"/>
 
-      <section className="py-20 px-6 lg:px-12 max-w-6xl mx-auto">
+      <section className="py-20 px-5 sm:px-8 lg:px-12 max-w-6xl mx-auto">
         <div className="grid md:grid-cols-3 gap-5">
           {PRICING.map((plan, i) => (
             <Reveal key={i} delay={i * 0.1}>
+              {/* Extra top padding on featured card to make room for badge inside */}
               <Card className={cn(
-                'relative flex flex-col h-full border',
+                'relative flex flex-col h-full border overflow-visible',
                 plan.featured
                   ? 'border-brand-teal/25 bg-gradient-to-b from-brand-teal/[0.06] to-card shadow-glow'
                   : 'border-white/[0.07]'
               )}>
-                {plan.badge && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <Badge variant="default" className="shadow-glow px-4 py-1">{plan.badge}</Badge>
-                  </div>
-                )}
-                <CardHeader className="p-8 pb-0">
+                <CardHeader className={cn('p-8', plan.badge ? 'pt-10' : 'pt-8')}>
+                  {/* Badge sits INSIDE the card, flush to the top edge — no overlap with border */}
+                  {plan.badge && (
+                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-10">
+                      <span className="inline-flex items-center rounded-full border border-brand-teal/40 bg-[#0C1220] px-4 py-1 text-[11px] font-semibold tracking-[0.08em] uppercase text-brand-teal shadow-glow whitespace-nowrap">
+                        {plan.badge}
+                      </span>
+                    </div>
+                  )}
+
                   <div className="eyebrow-label mb-3">{plan.tier}</div>
-                  <CardTitle className="text-[22px] text-white mb-3">{plan.name}</CardTitle>
+                  <CardTitle className="text-[22px] text-white mb-3 leading-snug">{plan.name}</CardTitle>
                   <CardDescription className="text-[15px] text-white/45 leading-relaxed font-light">
                     {plan.desc}
                   </CardDescription>
                 </CardHeader>
 
-                <CardContent className="p-8 flex flex-col flex-1">
+                <CardContent className="p-8 pt-0 flex flex-col flex-1">
                   <div className="mb-1">
                     <span className="text-[15px] text-white/35 align-super">$</span>
                     <span className="text-[48px] font-bold text-white tracking-tight leading-none">{plan.price}</span>
@@ -87,7 +92,7 @@ export default function Pricing() {
         </div>
 
         <Reveal delay={0.3} className="mt-8 text-center">
-          <p className="text-[14px] text-white/25">
+          <p className="text-[14px] text-white/25 px-4">
             All engagements are scoped after a discovery call. Implementation pricing varies based on environment complexity.
           </p>
         </Reveal>
@@ -95,8 +100,7 @@ export default function Pricing() {
 
       <Divider/>
 
-      {/* FAQ with shadcn Accordion */}
-      <section className="py-20 px-6 lg:px-12 max-w-3xl mx-auto">
+      <section className="py-20 px-5 sm:px-8 lg:px-12 max-w-3xl mx-auto">
         <SectionHeader center eyebrow="FAQ" title="Common questions"/>
         <Reveal delay={0.1} className="mt-10">
           <Accordion type="single" collapsible className="w-full">
@@ -116,7 +120,7 @@ export default function Pricing() {
 
       <Divider/>
 
-      <section className="py-16 px-6 text-center max-w-xl mx-auto">
+      <section className="py-16 px-5 text-center max-w-xl mx-auto">
         <Reveal>
           <h2 className="text-title-lg text-white mb-4">Not sure which engagement is right?</h2>
           <p className="text-body-xl text-white/55 font-light mb-8">
