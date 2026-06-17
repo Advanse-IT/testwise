@@ -100,13 +100,13 @@ export function LogoFull({ size = 36, className = '', interactive = false }) {
       <LogoMark size={size} interactive={interactive} />
       <div className="leading-none">
         <div
-          className="font-semibold tracking-tight text-[17px] leading-tight"
+          className="font-semibold tracking-tight text-[20px] leading-tight"
           style={{ color: '#EEF2F7' }}
         >
           Test<span style={{ color: '#22D3C3' }}>wise</span>
         </div>
         <div
-          className="text-[10px] font-medium tracking-[0.14em] uppercase mt-[3px]"
+          className="text-[11px] font-medium tracking-[0.14em] uppercase mt-[3px]"
           style={{ color: 'rgba(238,242,247,0.38)' }}
         >
           by Advanse-IT

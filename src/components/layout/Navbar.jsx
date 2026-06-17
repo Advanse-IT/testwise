@@ -35,7 +35,7 @@ export default function Navbar() {
       >
         {/* Logo */}
         <Link to="/" aria-label="Testwise home" className="flex-shrink-0">
-          <LogoFull size={34} interactive />
+          <LogoFull size={44} interactive />
         </Link>
 
         {/* Desktop nav — centred */}
