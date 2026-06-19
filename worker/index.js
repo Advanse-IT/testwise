@@ -82,6 +82,8 @@ async function sendEmail(env, { to, toName, replyToEmail, replyToName, subject, 
     personalizations: [{
       to:       [{ email: to, name: toName || to }],
       ...(replyToEmail ? { reply_to: { email: replyToEmail, name: replyToName || replyToEmail } } : {}),
+      dkim_domain:      'advanseit.com.au',
+      dkim_selector:    'mailchannels',
     }],
     from: {
       email: env.SMTP_USER,
