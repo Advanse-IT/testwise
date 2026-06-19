@@ -195,7 +195,7 @@ export default {
       `02 — We send you a calendar link for a 30-minute discovery call`,
       `03 — We map your environment and design your bespoke pipeline`,
       ``,
-      `Reach us directly: hello@advanseit.com.au`,
+      `Reach us directly: admin@advanseit.com.au`,
       ``,
       `Testwise by Advanse-IT`,
       `testwise.advanseit.com.au`,
@@ -227,7 +227,7 @@ export default {
     } catch (err) {
       console.error('Send error:', err.message)
       return respond({
-        error: 'We could not send your message right now. Please email us directly at hello@advanseit.com.au',
+        error: 'We could not send your message right now. Please email us directly at admin@advanseit.com.au',
       }, 500, cors)
     }
   },
