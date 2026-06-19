@@ -1,0 +1,30 @@
+name = "testwise-contact"
+main = "index.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# ── KV Namespace (rate limiting) ────────────────────────────────
+# After running: wrangler kv namespace create CONTACT_KV
+# paste the returned id below
+[[kv_namespaces]]
+binding = "CONTACT_KV"
+id      = "PASTE_YOUR_KV_NAMESPACE_ID_HERE"
+
+# ── Routes ──────────────────────────────────────────────────────
+# Uncomment and update once you have a custom domain on Cloudflare:
+# [[routes]]
+# pattern = "testwise.advanseit.com.au/api/contact"
+# zone_name = "advanseit.com.au"
+
+# ── Secrets (set via CLI, never stored here) ────────────────────
+# wrangler secret put SMTP_USER   → admin@advanseit.com.au
+# wrangler secret put NOTIFY_TO   → admin@advanseit.com.au
+# wrangler secret put SMTP_PASS   → (your email password — stored but not
+#                                     used by MailChannels delivery path;
+#                                     kept for future direct-SMTP fallback)
+
+# ── Local dev (.dev.vars file, git-ignored) ──────────────────────
+# Create worker/.dev.vars with:
+#   SMTP_USER=admin@advanseit.com.au
+#   NOTIFY_TO=admin@advanseit.com.au
+#   SMTP_PASS=your_password_here
