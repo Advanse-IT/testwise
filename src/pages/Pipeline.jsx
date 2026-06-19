@@ -1,113 +1,127 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Lock, Unlock } from 'lucide-react'
+import { ArrowRight, Lock, Unlock, Info,
+         FileText, ListChecks, Code2, Play, BugOff, TicketCheck, BarChart3, FileCheck2 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FileText, ListChecks, Code2, Play, BugOff, TicketCheck, BarChart3, FileCheck2 } from 'lucide-react'
+import { Button } from '@/components/shadcn/button'
+import { Badge } from '@/components/shadcn/badge'
+import { Card, CardContent } from '@/components/shadcn/card'
+import { Separator } from '@/components/shadcn/separator'
 import PageWrapper from '@/components/ui/PageWrapper'
 import SectionHeader from '@/components/ui/SectionHeader'
 import Reveal from '@/components/ui/Reveal'
 import { Divider } from '@/components/ui/Divider'
-import { GATE_MODES } from '@/lib/data'
 import { usePageMeta } from '@/hooks/usePageMeta'
+import { GATE_MODES } from '@/lib/data'
+import { cn } from '@/lib/utils'
 
 const STAGE_ICONS = [FileText, ListChecks, Code2, Play, BugOff, TicketCheck, BarChart3, FileCheck2]
-
 const STAGES = [
-  { id:1, name:'Requirement Analysis', tool:'Your project management tool' },
-  { id:2, name:'Test Case Generation', tool:'Claude AI' },
-  { id:3, name:'Test Automation',      tool:'Your test framework' },
-  { id:4, name:'Test Execution',       tool:'Your CI/CD pipeline' },
-  { id:5, name:'Defect Triage',        tool:'Claude AI' },
-  { id:6, name:'Issue Logging',        tool:'Your issue tracker' },
-  { id:7, name:'Test Reporting',       tool:'Your test management platform' },
-  { id:8, name:'Sign-off & Delivery',  tool:'Auto-delivered' },
+  { id:1, name:'Requirement Analysis', tool:'Your project management tool',
+    desc:'Reads sprint stories and acceptance criteria. Maps test scope, identifies gaps, and flags ambiguities before a single test is written.' },
+  { id:2, name:'Test Case Generation',  tool:'Claude AI',
+    desc:'Generates structured test cases covering happy paths, edge cases, negative scenarios, and boundary conditions — calibrated to your domain.' },
+  { id:3, name:'Test Automation',       tool:'Your test framework',
+    desc:'Writes executable automation scripts in your chosen framework and language. No new tooling imposed — works with what your team already uses.' },
+  { id:4, name:'Test Execution',        tool:'Your CI/CD pipeline',
+    desc:'Triggers and manages the full test run inside your existing CI/CD infrastructure. Captures results, screenshots, and trace logs across all environments.' },
+  { id:5, name:'Defect Triage',         tool:'Claude AI',
+    desc:'Analyses every failure. Classifies defects by severity and root cause. Links each issue directly to the originating requirement.' },
+  { id:6, name:'Issue Logging',         tool:'Your issue tracker',
+    desc:'Creates fully-formed defect tickets — populated with steps to reproduce, severity, screenshots, environment details, and build references.' },
+  { id:7, name:'Test Reporting',        tool:'Your test management platform',
+    desc:'Syncs results to your existing test management platform of choice: Xray, Zephyr, TestRail, qTest, Azure Test Plans, or any other.' },
+  { id:8, name:'Sign-off & Delivery',   tool:'Auto-delivered',
+    desc:'Generates an auditable test summary adapted to your reporting standards and delivers it to the right stakeholders. Sprint QA closed.' },
 ]
 
-const STAGE_DESC = [
-  'Reads sprint stories and acceptance criteria from your existing project management platform. Maps test scope and flags ambiguities before a single test is written.',
-  'Generates comprehensive test cases covering happy paths, edge cases, negative scenarios, and boundary conditions — calibrated to your domain and test conventions.',
-  'Writes executable automation scripts in your chosen framework and language. No new tooling imposed. Works with what your team already uses.',
-  'Triggers and manages the full test run inside your existing CI/CD infrastructure. Captures results, screenshots, and trace logs across all environments.',
-  'Analyses every failure. Classifies defects by severity and root cause. Links each issue back to the originating requirement automatically.',
-  'Creates fully-formed defect tickets in your issue tracker — populated with steps to reproduce, severity, screenshots, and build references.',
-  'Syncs results to your existing test management platform of choice. Works with Xray, Zephyr, TestRail, qTest, Azure Test Plans, or any other platform.',
-  'Generates a clear, auditable test summary adapted to your reporting standards and delivers it to the right stakeholders. Sprint QA closed.',
+const COMPAT = [
+  { label:'Project management',  examples:'JIRA · Linear · Azure DevOps · GitHub Issues · Shortcut' },
+  { label:'CI/CD',               examples:'GitHub Actions · Azure Pipelines · Jenkins · Bamboo · CircleCI' },
+  { label:'Issue tracking',      examples:'JIRA · Linear · GitHub · ServiceNow · Azure DevOps' },
+  { label:'Test management',     examples:'Xray · Zephyr · TestRail · qTest · Azure Test Plans — or your own platform' },
+  { label:'Test frameworks',     examples:'Playwright · Selenium · Cypress · RestAssured · Pytest — any framework' },
 ]
 
-function StageCard({ stage, desc, isGated, onToggle, index }) {
-  const [open, setOpen] = useState(false)
-  const StageIcon = STAGE_ICONS[index]
+function StageCard({ stage, StageIcon, isGated, onToggle, index }) {
+  const [expanded, setExpanded] = useState(false)
   return (
-    <Reveal delay={index * 0.05}>
-      <div
-        className={`rounded-xl border transition-all duration-250 overflow-hidden ${
-          isGated
-            ? 'border-amber/25 bg-amber/5'
-            : 'border-border bg-surface hover:border-teal/20 hover:bg-teal/5'
-        }`}
-      >
-        <div className="p-5">
-          <div className="flex items-start justify-between gap-3 mb-4">
-            <div className="flex items-start gap-3 flex-1">
-              <div className={`w-10 h-10 rounded-lg flex-shrink-0 flex items-center justify-center border transition-all ${
-                isGated ? 'border-amber/25 bg-amber/10 text-amber' : 'border-border bg-raised text-teal'
-              }`}>
-                <StageIcon size={17}/>
-              </div>
-              <div>
-                <div className="text-[10px] font-semibold tracking-widest text-fog uppercase mb-1">
-                  Stage {String(stage.id).padStart(2,'0')}
-                </div>
-                <div className="text-[15px] font-semibold text-snow leading-tight">{stage.name}</div>
-                <div className="text-[12px] text-fog mt-0.5">{stage.tool}</div>
-              </div>
+    <Reveal delay={index * 0.04}>
+      <Card className={cn(
+        'overflow-hidden transition-all duration-250',
+        isGated ? 'border-brand-amber/25 bg-brand-amber/[0.04]' : 'border-white/[0.07] hover:border-brand-teal/20'
+      )}>
+        <CardContent className="p-5">
+          <div className="flex items-start justify-between gap-2 mb-3">
+            <div className="text-[10px] font-semibold tracking-[0.14em] text-white/25 uppercase">
+              Stage {String(stage.id).padStart(2,'0')}
             </div>
             <button
               onClick={() => onToggle(stage.id)}
-              className={`flex-shrink-0 flex items-center gap-1.5 text-[11px] font-semibold px-3 py-1.5 rounded-full border transition-all ${
-                isGated ? 'border-amber/35 text-amber bg-amber/10 hover:bg-amber/15' : 'border-border text-fog hover:border-teal/30 hover:text-teal'
-              }`}
+              className={cn(
+                'flex items-center gap-1 text-[11px] font-semibold px-2.5 py-1 rounded-full border transition-all',
+                isGated
+                  ? 'border-brand-amber/35 text-brand-amber bg-brand-amber/10 hover:bg-brand-amber/15'
+                  : 'border-white/[0.08] text-white/30 hover:border-brand-teal/30 hover:text-brand-teal'
+              )}
               aria-pressed={isGated}
+              aria-label={`${stage.name}: ${isGated ? 'gate active' : 'automated'}`}
             >
-              {isGated ? <><Lock size={10}/> Gate on</> : <><Unlock size={10}/> Automated</>}
+              {isGated ? <><Lock size={9}/> Gate on</> : <><Unlock size={9}/> Auto</>}
             </button>
           </div>
 
+          <div className="flex items-center gap-3 mb-3">
+            <div className={cn(
+              'w-9 h-9 rounded-lg flex-shrink-0 flex items-center justify-center border transition-colors',
+              isGated
+                ? 'border-brand-amber/25 bg-brand-amber/10 text-brand-amber'
+                : 'border-white/[0.08] bg-white/[0.03] text-brand-teal'
+            )}>
+              <StageIcon size={15}/>
+            </div>
+            <div>
+              <div className="text-[14px] font-semibold text-white leading-tight">{stage.name}</div>
+              <div className="text-[11px] text-white/30 mt-0.5">{stage.tool}</div>
+            </div>
+          </div>
+
           <button
-            onClick={() => setOpen(v => !v)}
-            className="text-[12px] text-fog hover:text-mist transition-colors flex items-center gap-1"
+            onClick={() => setExpanded(v => !v)}
+            className="text-[12px] text-white/30 hover:text-brand-teal transition-colors"
           >
-            {open ? 'Hide detail ↑' : 'What happens here ↓'}
+            {expanded ? 'Less detail ↑' : 'What happens here ↓'}
           </button>
 
           <AnimatePresence>
-            {open && (
+            {expanded && (
               <motion.p
-                initial={{height:0,opacity:0,marginTop:0}}
-                animate={{height:'auto',opacity:1,marginTop:12}}
-                exit={{height:0,opacity:0,marginTop:0}}
-                className="text-body-md text-mist leading-relaxed overflow-hidden"
+                initial={{ height:0, opacity:0, marginTop:0 }}
+                animate={{ height:'auto', opacity:1, marginTop:10 }}
+                exit={{ height:0, opacity:0, marginTop:0 }}
+                className="text-[13px] text-white/45 leading-relaxed overflow-hidden font-light"
               >
-                {desc}
+                {stage.desc}
               </motion.p>
             )}
           </AnimatePresence>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </Reveal>
   )
 }
 
 export default function Pipeline() {
-  usePageMeta({ title:'The Pipeline', description:'Explore the Testwise 8-stage autonomous QA pipeline. Configure human approval gates per stage to match your risk profile and compliance requirements.', canonical:'/pipeline' })
+  usePageMeta({
+    title: 'The Pipeline',
+    description: 'Explore the Testwise 8-stage autonomous QA pipeline. Configure human approval gates per stage to match your risk profile.',
+    canonical: '/pipeline',
+  })
+
   const [activeMode, setActiveMode] = useState('full')
-  const [gates, setGates] = useState([])
+  const [gates, setGates]           = useState([])
 
-  function applyMode(key) {
-    setActiveMode(key)
-    setGates([...GATE_MODES[key].gates])
-  }
-
+  function applyMode(key) { setActiveMode(key); setGates([...GATE_MODES[key].gates]) }
   function toggleGate(id) {
     setActiveMode(null)
     setGates(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id])
@@ -118,105 +132,117 @@ export default function Pipeline() {
 
   return (
     <PageWrapper>
-      <section className="pt-32 pb-16 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="pt-32 pb-16 px-5 sm:px-8 lg:px-12 max-w-7xl mx-auto">
         <SectionHeader
           eyebrow="The pipeline"
           title="Eight stages. Fully autonomous."
-          body="Every stage can be configured with a human approval gate. Click any stage card to toggle it, or choose a preset configuration below."
+          body="Every stage can carry a human approval gate — active or off. Click any stage card to expand detail, toggle its gate, or choose a preset configuration."
         />
       </section>
 
-      <div className="divider-glow"/>
+      <div className="tw-divider-glow"/>
 
-      <section className="py-16 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section className="py-16 px-5 sm:px-8 lg:px-12 max-w-7xl mx-auto">
         {/* Controls */}
         <Reveal className="flex flex-wrap items-center justify-between gap-5 mb-6">
           <div className="flex flex-wrap gap-2">
-            {Object.entries(GATE_MODES).map(([key,mode]) => (
+            {Object.entries(GATE_MODES).map(([key, mode]) => (
               <button key={key} onClick={() => applyMode(key)}
-                className={`text-[13px] font-medium px-4 py-2 rounded-full border transition-all ${
-                  activeMode===key ? 'border-teal/40 bg-teal/10 text-teal' : 'border-border text-mist hover:border-teal/25 hover:text-snow'
-                }`}>
+                className={cn(
+                  'text-[13px] font-medium px-4 py-2 rounded-full border transition-all duration-150',
+                  activeMode === key
+                    ? 'border-brand-teal/40 bg-brand-teal/10 text-brand-teal'
+                    : 'border-white/[0.08] text-white/45 hover:border-brand-teal/25 hover:text-white/80'
+                )}
+              >
                 {mode.label}
               </button>
             ))}
           </div>
-          <div className="flex items-center gap-5 text-body-md">
-            <span className="flex items-center gap-2 text-mist">
-              <span className="w-2 h-2 rounded-full bg-teal"/>
+          <div className="flex items-center gap-5 text-[14px]">
+            <span className="flex items-center gap-2 text-white/45">
+              <span className="w-2 h-2 rounded-full bg-brand-teal"/>
               {8 - gateCount} automated
             </span>
-            <span className="flex items-center gap-2 text-mist">
-              <span className="w-2 h-2 rounded-full bg-amber"/>
+            <span className="flex items-center gap-2 text-white/45">
+              <span className="w-2 h-2 rounded-full bg-brand-amber"/>
               {gateCount} gate{gateCount !== 1 ? 's' : ''}
             </span>
-            <span className="font-semibold text-teal">{autoPct}% autonomous</span>
+            <span className="font-semibold text-brand-teal">{autoPct}% autonomous</span>
           </div>
         </Reveal>
 
-        {/* Mode description */}
         {activeMode && (
           <Reveal className="mb-7">
-            <div className="rounded-xl border border-border bg-surface px-5 py-4 text-body-md text-mist">
-              {GATE_MODES[activeMode].desc}
-            </div>
+            <Card className="border-white/[0.07]">
+              <CardContent className="p-4 flex items-start gap-3">
+                <Info size={14} className="text-brand-teal mt-0.5 flex-shrink-0"/>
+                <p className="text-[14px] text-white/50 leading-relaxed">{GATE_MODES[activeMode].desc}</p>
+              </CardContent>
+            </Card>
           </Reveal>
         )}
 
-        {/* Stage grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {STAGES.map((stage, i) => (
-            <StageCard key={stage.id} stage={stage} desc={STAGE_DESC[i]} index={i}
-              isGated={gates.includes(stage.id)} onToggle={toggleGate}/>
+            <StageCard
+              key={stage.id} stage={stage} index={i}
+              StageIcon={STAGE_ICONS[i]}
+              isGated={gates.includes(stage.id)}
+              onToggle={toggleGate}
+            />
           ))}
         </div>
+
+        <Reveal className="mt-5 flex flex-wrap gap-6 text-[13px] text-white/25">
+          <span className="flex items-center gap-1.5"><Unlock size={11}/> Teal = automated</span>
+          <span className="flex items-center gap-1.5"><Lock size={11} className="text-brand-amber"/><span className="text-brand-amber">Amber = human gate active</span></span>
+        </Reveal>
       </section>
 
-      <Divider />
+      <Divider/>
 
-      {/* Tool compatibility */}
-      <section className="py-20 px-6 lg:px-12 max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+      <section className="py-20 px-5 sm:px-8 lg:px-12 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-start">
           <Reveal>
-            <div className="eyebrow">Tool compatibility</div>
-            <h2 className="text-h1 text-snow mb-5">Works with your existing stack — not ours.</h2>
-            <p className="text-body-xl text-mist font-light leading-relaxed mb-5">
-              Testwise does not mandate new tools. The pipeline integrates with whatever you already run across every stage.
+            <div className="eyebrow-label">Tool compatibility</div>
+            <h2 className="text-title-xl text-white mb-5">Works with your existing stack — not ours.</h2>
+            <p className="text-body-xl text-white/55 font-light leading-relaxed mb-4">
+              Testwise integrates with whatever you already run across every stage. Nothing is ripped out. No new platforms mandated.
             </p>
-            <p className="text-body-lg text-mist font-light leading-relaxed">
-              Stage 7 — test reporting — is a common question. We work with any test management platform your team already uses. The examples shown are illustrative only. If you use a bespoke or internal system, we build the integration accordingly.
+            <p className="text-[15px] text-white/45 font-light leading-relaxed">
+              Stage 7 — test reporting — is a common question. We work with any test management platform your team uses. The examples shown are illustrative only. If you use a bespoke or internal system, we build the integration accordingly.
             </p>
           </Reveal>
+
           <Reveal delay={0.1}>
-            <div className="flex flex-col gap-3">
-              {[
-                { label:'Project management',  examples:'JIRA · Linear · Azure DevOps · GitHub Issues · Shortcut' },
-                { label:'CI/CD',               examples:'GitHub Actions · Azure Pipelines · Jenkins · Bamboo · CircleCI' },
-                { label:'Issue tracking',      examples:'JIRA · Linear · GitHub · ServiceNow · Azure DevOps' },
-                { label:'Test management',     examples:'Xray · Zephyr · TestRail · qTest · Azure Test Plans — or your own platform' },
-                { label:'Test frameworks',     examples:'Playwright · Selenium · Cypress · RestAssured · Pytest · any framework' },
-              ].map((item,i) => (
-                <div key={i} className="card p-5">
-                  <div className="text-label text-teal mb-2">{item.label}</div>
-                  <div className="text-body-md text-mist">{item.examples}</div>
-                </div>
+            <div className="space-y-3">
+              {COMPAT.map((item, i) => (
+                <Card key={i} className="border-white/[0.07]">
+                  <CardContent className="p-5">
+                    <div className="text-[11px] font-semibold tracking-[0.12em] uppercase text-brand-teal mb-2">{item.label}</div>
+                    <div className="text-[14px] text-white/45 leading-relaxed">{item.examples}</div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </Reveal>
         </div>
       </section>
 
-      <Divider />
+      <Divider/>
 
-      <section className="py-16 px-6 text-center max-w-xl mx-auto">
+      <section className="py-16 px-5 text-center max-w-xl mx-auto">
         <Reveal>
-          <h2 className="text-h2 text-snow mb-4">Want to see how this maps to your stack?</h2>
-          <p className="text-body-xl text-mist font-light mb-7">The first call is a discovery session — we walk through your environment and show you exactly what the pipeline would look like.</p>
-          <Link to="/contact" className="btn-primary inline-flex">Book a discovery call <ArrowRight size={16}/></Link>
+          <h2 className="text-title-lg text-white mb-4">Want to see how this maps to your stack?</h2>
+          <p className="text-body-xl text-white/55 font-light mb-8">
+            The first call is a discovery session. We walk through your environment and show you exactly what the pipeline would look like.
+          </p>
+          <Button asChild size="lg">
+            <Link to="/contact">Book a discovery call <ArrowRight size={16}/></Link>
+          </Button>
         </Reveal>
       </section>
     </PageWrapper>
   )
 }
-
-// SEO — added at module level via side-effect, component calls hook internally

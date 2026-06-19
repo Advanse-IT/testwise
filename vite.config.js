@@ -4,16 +4,21 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
-  resolve: { alias: { '@': path.resolve(__dirname, './src') } },
+  resolve: {
+    alias: { '@': path.resolve(__dirname, './src') },
+  },
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-react':  ['react','react-dom','react-router-dom'],
-          'vendor-motion': ['framer-motion'],
-          'vendor-icons':  ['lucide-react'],
-        }
-      }
-    }
-  }
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('framer-motion'))                         return 'vendor-motion'
+            if (id.includes('react-dom') || id.includes('react-router')) return 'vendor-react'
+            if (id.includes('lucide-react'))                          return 'vendor-icons'
+            if (id.includes('@radix-ui'))                             return 'vendor-radix'
+          }
+        },
+      },
+    },
+  },
 })

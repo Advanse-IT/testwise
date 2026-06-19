@@ -6,7 +6,7 @@ export const SITE = {
   parentUrl:   'https://advanseit.com.au',
   url:         'https://testwise.advanseit.com.au',
   email:       'hello@advanseit.com.au',
-  linkedin:    'https://linkedin.com/in/sushruth007',
+  linkedin:    'https://www.linkedin.com/company/99188781/admin/dashboard/',
   personalSite:'https://sush.au',
   location:    'Brisbane, Queensland, Australia',
 }

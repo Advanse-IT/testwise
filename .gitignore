@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+worker/node_modules/
+
+# Build output
+dist/
+
+# Environment files — NEVER commit these
+.env
+.env.local
+.env*.local
+worker/.dev.vars
+
+# Worker real config (keep .deploy version, gitignore the real one)
+worker/wrangler.toml
+
+# Cloudflare
+.wrangler/
+worker/.wrangler/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json
+.idea/

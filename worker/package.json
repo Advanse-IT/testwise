@@ -1,0 +1,16 @@
+{
+  "name": "testwise-contact-worker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cloudflare Worker — Testwise contact form email handler",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev":    "wrangler dev",
+    "deploy": "wrangler deploy",
+    "secrets": "echo 'Run: wrangler secret put SMTP_USER && wrangler secret put NOTIFY_TO && wrangler secret put SMTP_PASS'"
+  },
+  "devDependencies": {
+    "wrangler": "^3.60.0"
+  }
+}

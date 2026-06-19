@@ -1,0 +1,5 @@
+# Copy this to .dev.vars and fill in values for local development
+# .dev.vars is gitignored — never commit real credentials
+SMTP_USER=admin@advanseit.com.au
+NOTIFY_TO=admin@advanseit.com.au
+SMTP_PASS=your_email_password_here

@@ -1,0 +1,28 @@
+# ════════════════════════════════════════════════════════════════
+# Testwise Contact Worker — wrangler.toml
+#
+# IMPORTANT: This file is named wrangler.toml.deploy on purpose.
+# The React/Vite app is deployed via Cloudflare Pages (NOT this file).
+# This Worker is deployed SEPARATELY via the Cloudflare dashboard or CLI.
+#
+# To deploy this Worker:
+#   cd worker
+#   cp wrangler.toml.deploy wrangler.toml   ← only on your LOCAL machine
+#   (fill in your KV namespace id below)
+#   npm install
+#   wrangler deploy
+#
+# Never commit wrangler.toml (only wrangler.toml.deploy) to git.
+# ════════════════════════════════════════════════════════════════
+
+name                 = "testwise-contact"
+main                 = "index.js"
+compatibility_date   = "2024-09-23"
+compatibility_flags  = ["nodejs_compat"]
+
+# Rate-limiting KV store
+# Create with: wrangler kv namespace create CONTACT_KV
+# Then paste the returned id here:
+[[kv_namespaces]]
+binding = "CONTACT_KV"
+id      = "PASTE_YOUR_KV_NAMESPACE_ID_HERE"
