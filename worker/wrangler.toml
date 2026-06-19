@@ -8,7 +8,7 @@ compatibility_flags = ["nodejs_compat"]
 # paste the returned id below
 [[kv_namespaces]]
 binding = "CONTACT_KV"
-id      = "PASTE_YOUR_KV_NAMESPACE_ID_HERE"
+id      = "2ca6c2a6de8548e4935a8274096e314a"
 
 # ── Routes ──────────────────────────────────────────────────────
 # Uncomment and update once you have a custom domain on Cloudflare:
