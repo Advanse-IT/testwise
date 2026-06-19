@@ -459,10 +459,10 @@ export function buildConfirmationEmail({ name, email, company, service, message,
             <table role="presentation" cellpadding="0" cellspacing="0" align="center">
               <tr>
                 <td style="border-radius:10px;background:${T.teal};">
-                  <a href="mailto:hello@advanseit.com.au?subject=[${ref}]%20Follow-up"
+                  <a href="mailto:admin@advanseit.com.au?subject=[${ref}]%20Follow-up"
                      style="display:inline-block;padding:13px 28px;font-family:${T.font};
                             font-size:15px;font-weight:600;color:${T.bgCard};text-decoration:none;">
-                    hello@advanseit.com.au
+                    admin@advanseit.com.au
                   </a>
                 </td>
               </tr>
