@@ -227,7 +227,7 @@ export default {
     } catch (err) {
       console.error('Send error:', err.message)
       return respond({
-        error: 'We could not send your message right now. Please email us directly at admin@advanseit.com.au',
+        error: `Error: ${err.message}. Please email us at admin@advanseit.com.au`,
       }, 500, cors)
     }
   },
