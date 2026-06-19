@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 
-const BASE_TITLE = 'Testwise — Autonomous QA Pipeline | by Advanse-IT'
+const BASE_TITLE = 'Testwise — Autonomous QA Pipeline | by Advanse IT'
 const BASE_DESC  = 'Testwise delivers a fully autonomous AI QA pipeline engineered for your stack — from requirements to signed-off report, zero manual effort. Bespoke for every client.'
 
 export function usePageMeta({ title, description, canonical } = {}) {
   useEffect(() => {
-    const fullTitle = title ? `${title} | Testwise by Advanse-IT` : BASE_TITLE
+    const fullTitle = title ? `${title} | Testwise by Advanse IT` : BASE_TITLE
     document.title = fullTitle
 
     const setMeta = (selector, content) => {

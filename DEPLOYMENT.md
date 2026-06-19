@@ -23,7 +23,7 @@ git init
 git add .
 git commit -m "Initial Testwise site"
 git branch -M main
-git remote add origin https://github.com/Advanse-IT/testwise.git
+git remote add origin https://github.com/Advanse IT/testwise.git
 git push -u origin main
 ```
 

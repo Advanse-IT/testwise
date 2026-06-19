@@ -70,7 +70,7 @@ function logoRow(align = 'left') {
           Test<span style="color:${T.teal};">wise</span>
         </div>
         <div style="font-family:${T.font};font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:${T.fog};margin-top:3px;">
-          by Advanse-IT
+          by Advanse IT
         </div>
       </td>
     </tr>
@@ -83,7 +83,7 @@ function footerRow(centerText = false) {
     <td style="background:${T.bgDark};border-top:1px solid ${T.border};padding:22px 40px;border-radius:0 0 16px 16px;${centerText ? 'text-align:center;' : ''}">
       <p style="font-family:${T.font};font-size:12px;color:${T.fog};margin:0 0 5px;line-height:1.7;">
         <strong style="color:rgba(238,242,247,0.4);">Testwise</strong> by
-        <a href="https://advanseit.com.au" style="color:rgba(34,211,195,0.55);text-decoration:none;">Advanse-IT</a>
+        <a href="https://advanseit.com.au" style="color:rgba(34,211,195,0.55);text-decoration:none;">Advanse IT</a>
         &nbsp;·&nbsp;
         <a href="https://testwise.advanseit.com.au" style="color:rgba(34,211,195,0.55);text-decoration:none;">testwise.advanseit.com.au</a>
         &nbsp;·&nbsp; Brisbane, Australia

@@ -2,7 +2,7 @@ export const SITE = {
   name:        'Testwise',
   tagline:     'Autonomous QA, built around your stack.',
   sub:         'Every Testwise engagement is architected from scratch — your tools, your processes, your risk profile.',
-  parent:      'Advanse-IT',
+  parent:      'Advanse IT',
   parentUrl:   'https://advanseit.com.au',
   url:         'https://testwise.advanseit.com.au',
   email:       'admin@advanseit.com.au',

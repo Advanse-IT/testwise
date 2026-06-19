@@ -103,7 +103,7 @@ export function LogoFull({ size = 44, className = '', interactive = false }) {
           className="font-medium tracking-[0.14em] uppercase mt-[4px]"
           style={{ fontSize: '11px', color: 'rgba(238,242,247,0.38)' }}
         >
-          by Advanse-IT
+          by Advanse IT
         </div>
       </div>
     </div>

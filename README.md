@@ -1,4 +1,4 @@
-# Testwise — by Advanse-IT
+# Testwise — by Advanse IT
 
 > Autonomous QA, built around your stack.
 
@@ -57,7 +57,7 @@ npm run preview   # Preview production build
 ## Deploy to Cloudflare Pages
 
 ### Option A — Dashboard (simplest, no secrets needed)
-1. Push this repo to GitHub under your Advanse-IT org
+1. Push this repo to GitHub under your Advanse IT org
 2. Cloudflare Pages → Create project → Connect to Git → select repo
 3. Build command: `npm run build`
 4. Build output directory: `dist`

@@ -65,7 +65,7 @@ export default function Footer() {
 
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <p className="text-[13px] text-white/25">
-            © {new Date().getFullYear()} Advanse-IT Pty Ltd. All rights reserved.
+            © {new Date().getFullYear()} Advanse IT Pty Ltd. All rights reserved.
           </p>
           <p className="text-[13px] text-white/25">
             Testwise is a product of{' '}

@@ -87,7 +87,7 @@ async function sendEmail(env, { to, toName, replyToEmail, replyToName, subject, 
     }],
     from: {
       email: env.SMTP_USER,
-      name:  'Testwise by Advanse-IT',
+      name:  'Testwise by Advanse IT',
     },
     subject,
     content: [
@@ -193,7 +193,7 @@ export default {
       ``,
       `Reach us directly: admin@advanseit.com.au`,
       ``,
-      `Testwise by Advanse-IT`,
+      `Testwise by Advanse IT`,
       `testwise.advanseit.com.au`,
       `Brisbane, Queensland, Australia`,
     ].join('\n')
