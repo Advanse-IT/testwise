@@ -185,47 +185,55 @@ export default function Contact() {
     setSending(true)
 
     try {
+      // Guard: API URL not configured
       if (!API_URL) {
-        throw new Error('CONTACT_API_NOT_CONFIGURED')
+        setSubmitError(`API not configured — please email us directly at ${SITE.email}`)
+        setSending(false)
+        return
       }
 
-      const res = await fetch(API_URL, {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({
-          name:     form.name.trim(),
-          email:    form.email.trim(),
-          company:  form.company.trim(),
-          service:  form.service,
-          message:  form.message.trim(),
-          botcheck: '',  // honeypot — leave empty
-        }),
-      })
-
-      const data = await res.json()
+      let res, data
+      try {
+        res  = await fetch(API_URL, {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({
+            name:     form.name.trim(),
+            email:    form.email.trim(),
+            company:  form.company.trim(),
+            service:  form.service,
+            message:  form.message.trim(),
+            botcheck: '',
+          }),
+        })
+        data = await res.json()
+      } catch (networkErr) {
+        // Network error or CORS — never show blank page
+        setSubmitError(
+          `Unable to connect. Please email us directly at ${SITE.email}`
+        )
+        setSending(false)
+        return
+      }
 
       if (res.status === 422 && data.fields) {
         setFieldErrors(data.fields)
+        setSending(false)
         return
       }
 
       if (!res.ok || !data.success) {
-        throw new Error(data.error || 'Submission failed')
+        setSubmitError(data.error || `Something went wrong. Please email ${SITE.email}`)
+        setSending(false)
+        return
       }
 
-      // Success — data.ref contains e.g. "TW-2026-A4K9M"
+      // Success
       setResult({ ref: data.ref, name: form.name })
 
     } catch (err) {
-      if (err.message === 'CONTACT_API_NOT_CONFIGURED') {
-        setSubmitError(
-          `Contact API not configured. Set VITE_CONTACT_API_URL in your environment variables, or email us directly at ${SITE.email}`
-        )
-      } else {
-        setSubmitError(
-          err.message || `Something went wrong. Please email us at ${SITE.email}`
-        )
-      }
+      // Catch-all — never let the page go blank
+      setSubmitError(`Something went wrong. Please email us at ${SITE.email}`)
     } finally {
       setSending(false)
     }
