@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { MapPin, Mail, Phone, CheckCircle, Send, AlertCircle, Copy, Check } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Button } from '@/components/shadcn/button'
 import { Badge } from '@/components/shadcn/badge'
 import { Card, CardContent } from '@/components/shadcn/card'
@@ -329,16 +329,13 @@ export default function Contact() {
           <Reveal delay={0.1}>
             <Card className="border-white/[0.07]">
               <CardContent className="p-6 sm:p-8">
-                <AnimatePresence mode="wait">
-
                   {/* ── SUCCESS ── */}
                   {result ? (
                     <SuccessPanel ref={result.ref} name={result.name}/>
                   ) : (
 
                   /* ── FORM ── */
-                  <motion.form
-                    key="form"
+                  <form
                     onSubmit={handleSubmit}
                     noValidate
                     className="space-y-5"
@@ -465,10 +462,8 @@ export default function Contact() {
                     <p className="text-[12px] text-white/20 text-center">
                       We respond to every enquiry within 24 hours.
                     </p>
-                  </motion.form>
+                  </form>
                   )}
-
-                </AnimatePresence>
               </CardContent>
             </Card>
           </Reveal>

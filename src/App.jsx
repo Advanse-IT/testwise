@@ -16,7 +16,6 @@ import { useScrollToTop } from '@/hooks/useScrollToTop'
 export default function App() {
   const location = useLocation()
 
-  // Fires on every route change — must be inside BrowserRouter context
   useScrollToTop()
   useGoogleAnalytics()
 
@@ -25,7 +24,8 @@ export default function App() {
       <div className="min-h-screen bg-background text-foreground font-sans flex flex-col antialiased">
         <Navbar />
         <main className="flex-1">
-          <AnimatePresence mode="wait">
+          {/* mode="sync" prevents blank page crash when state updates during exit animation */}
+          <AnimatePresence mode="sync">
             <Routes location={location} key={location.pathname}>
               <Route path="/"             element={<Home />} />
               <Route path="/pipeline"     element={<Pipeline />} />
