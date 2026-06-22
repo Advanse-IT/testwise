@@ -83,7 +83,7 @@ function CopyButton({ text }) {
 }
 
 // ── Success state ────────────────────────────────────────────────
-function SuccessPanel({ ref: refNum, name }) {
+function SuccessPanel({ refNum, name }) {
   const firstName = name?.split(' ')[0] || 'there'
   return (
     <motion.div
@@ -331,7 +331,7 @@ export default function Contact() {
               <CardContent className="p-6 sm:p-8">
                   {/* ── SUCCESS ── */}
                   {result ? (
-                    <SuccessPanel ref={result.ref} name={result.name}/>
+                    <SuccessPanel refNum={result.ref} name={result.name}/>
                   ) : (
 
                   /* ── FORM ── */
