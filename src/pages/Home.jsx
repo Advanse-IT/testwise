@@ -129,7 +129,7 @@ export default function Home() {
                   <Link to="/contact">Start a conversation <ArrowRight size={16}/></Link>
                 </Button>
                 <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
-                  <Link to="/pipeline">Explore the pipeline <ChevronRight size={16}/></Link>
+                  <Link to="/demo">Watch the demo <ChevronRight size={16}/></Link>
                 </Button>
               </motion.div>
             </div>
