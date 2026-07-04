@@ -22,7 +22,7 @@ src/
 │   ├── Pipeline.jsx       # Interactive pipeline configurator
 │   ├── HowItWorks.jsx     # Implementation steps
 │   ├── Industries.jsx     # Verticals and compliance
-│   ├── Pricing.jsx        # Pricing + FAQ
+│   ├── Demo.jsx           # Demo video + case study + FAQ
 │   ├── Contact.jsx        # Contact page
 │   └── NotFound.jsx       # 404
 ├── components/
@@ -78,6 +78,6 @@ All content lives in `src/lib/data.js`. Edit that file to update:
 - Pipeline stages and tool names
 - Gate mode presets
 - Vertical/industry descriptions
-- Pricing tiers and features
+- Demo video and case study content
 - FAQ answers
 - Contact details

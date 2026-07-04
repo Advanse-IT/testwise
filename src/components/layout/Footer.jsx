@@ -8,7 +8,7 @@ const NAV = [
   { to:'/pipeline',      label:'The pipeline' },
   { to:'/how-it-works',  label:'How it works' },
   { to:'/industries',    label:'Industries'   },
-  { to:'/pricing',       label:'Pricing'      },
+  { to:'/demo',          label:'Demo'         },
   { to:'/contact',       label:'Contact'      },
 ]
 

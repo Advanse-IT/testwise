@@ -9,7 +9,7 @@ const LINKS = [
   { to: '/pipeline',      label: 'Pipeline'     },
   { to: '/how-it-works',  label: 'How it works' },
   { to: '/industries',    label: 'Industries'   },
-  { to: '/pricing',       label: 'Pricing'      },
+  { to: '/demo',          label: 'Demo'         },
 ]
 
 export default function Navbar() {

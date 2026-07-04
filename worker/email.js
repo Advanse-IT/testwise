@@ -296,7 +296,7 @@ export function buildConfirmationEmail({ name, email, company, service, message,
   const links = [
     { href:'https://testwise.advanseit.com.au/pipeline',      label:'The Pipeline'  },
     { href:'https://testwise.advanseit.com.au/how-it-works',  label:'How It Works'  },
-    { href:'https://testwise.advanseit.com.au/pricing',       label:'Pricing'       },
+    { href:'https://testwise.advanseit.com.au/demo',          label:'Demo'          },
   ]
 
   const html = `<!DOCTYPE html>

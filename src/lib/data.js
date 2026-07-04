@@ -163,61 +163,31 @@ export const HOW_STEPS = [
   },
 ]
 
-export const PRICING = [
-  {
-    tier: 'Assessment',
-    name: 'QA Maturity Audit',
-    desc: 'A structured engagement to assess your current QA posture, tool landscape, and readiness for autonomous testing. Delivered as a prioritised roadmap and executive brief.',
-    price: '3,500',
-    cadence: 'Fixed fee · One week',
-    featured: false,
-    cta: 'Request an audit',
-    features: [
-      'Full QA maturity assessment',
-      'Tool and process landscape review',
-      'Automation coverage baseline',
-      'AI pipeline readiness scoring',
-      'Prioritised implementation roadmap',
-      'Executive summary presentation',
-    ],
-  },
-  {
-    tier: 'Implementation',
-    name: 'Bespoke Pipeline Build',
-    desc: 'End-to-end design and deployment of your autonomous QA pipeline — architected around your stack, your team, and your risk profile. From discovery to first autonomous sprint.',
-    price: '20,000',
-    cadence: 'From · 2–3 week engagement',
-    featured: true,
-    badge: 'Core engagement',
-    cta: 'Start a conversation',
-    features: [
-      'Full bespoke pipeline architecture',
-      'Integration with your existing tool stack',
-      'Custom gate configuration per risk profile',
-      'AI calibration to your domain and codebase',
-      'Team training and full documentation',
-      'Supervised first autonomous sprint',
-      'Handover and knowledge transfer',
-    ],
-  },
-  {
-    tier: 'Retainer',
-    name: 'Ongoing Advisory',
-    desc: 'Continuous pipeline evolution, gate optimisation, coverage expansion, and strategic QA advisory — ensuring the system stays ahead of your product.',
-    price: '4,000',
-    cadence: 'Per month · Cancel anytime',
-    featured: false,
-    cta: 'Start a retainer',
-    features: [
-      'Monthly pipeline health review',
-      'Gate configuration updates',
-      'New feature and story type onboarding',
-      'Defect pattern and trend analysis',
-      'Four hours strategic QA advisory',
-      'Priority support channel',
-    ],
-  },
-]
+export const DEMO_VIDEO = {
+  src:   '/videos/testwise-d365-sales-demo.mp4',
+  title: 'Testwise autonomous QA pipeline — Microsoft Dynamics 365 Sales',
+  desc:  'Watch the pipeline read requirements, generate test cases, write automation scripts, execute a full run, triage defects, and produce a signed-off report — inside a live Dynamics 365 Sales environment.',
+}
+
+export const CASE_STUDY = {
+  eyebrow:  'Case study',
+  platform: 'Microsoft Dynamics 365 Sales',
+  title:    'Autonomous QA for a Dynamics 365 Sales implementation',
+  summary:  'This demo walks through the Testwise pipeline running end to end against a Dynamics 365 Sales environment — covering Leads, Opportunities, Quotes, and Order workflows — with zero manual test-writing effort.',
+  challenge: 'D365 Sales implementations move fast: entity customisations, business process flows, and Power Automate logic change every sprint. Manual regression testing across Leads, Opportunities, Quotes, and Orders couldn\'t keep pace, and every configuration change carried release risk.',
+  approach: [
+    'Reads user stories and acceptance criteria directly from the project\'s work tracking tool',
+    'Generates structured test cases for standard and customised D365 Sales entities and business process flows',
+    'Writes and executes automation scripts against the D365 Sales UI and underlying APIs',
+    'Triages failures automatically and raises fully-detailed defects with reproduction steps',
+    'Delivers a signed-off, auditable QA report at the end of every sprint',
+  ],
+  platforms: [
+    { icon: 'LayoutGrid',  name: 'Digital Applications',     desc: 'Custom-built web and internal business applications' },
+    { icon: 'Warehouse',   name: 'WMS Systems',               desc: 'Warehouse management platforms, incl. Infios Körber WMS' },
+    { icon: 'Building2',   name: 'Microsoft Dynamics 365',    desc: 'D365 Sales, and other Dynamics 365 modules' },
+  ],
+}
 
 export const FAQS = [
   {

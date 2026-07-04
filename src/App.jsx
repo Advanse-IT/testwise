@@ -7,7 +7,7 @@ import Home from '@/pages/Home'
 import Pipeline from '@/pages/Pipeline'
 import HowItWorks from '@/pages/HowItWorks'
 import Industries from '@/pages/Industries'
-import Pricing from '@/pages/Pricing'
+import Demo from '@/pages/Demo'
 import Contact from '@/pages/Contact'
 import NotFound from '@/pages/NotFound'
 import { useGoogleAnalytics } from '@/hooks/useGoogleAnalytics'
@@ -31,7 +31,7 @@ export default function App() {
               <Route path="/pipeline"     element={<Pipeline />} />
               <Route path="/how-it-works" element={<HowItWorks />} />
               <Route path="/industries"   element={<Industries />} />
-              <Route path="/pricing"      element={<Pricing />} />
+              <Route path="/demo"         element={<Demo />} />
               <Route path="/contact"      element={<Contact />} />
               <Route path="*"             element={<NotFound />} />
             </Routes>
