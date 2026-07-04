@@ -10,6 +10,7 @@ const LINKS = [
   { to: '/how-it-works',  label: 'How it works' },
   { to: '/industries',    label: 'Industries'   },
   { to: '/demo',          label: 'Demo'         },
+  { to: 'https://advanseit.com.au/blog?category=Testwise', label: 'Blog', external: true },
 ]
 
 export default function Navbar() {
@@ -50,7 +51,17 @@ export default function Navbar() {
           className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2"
           aria-label="Main navigation"
         >
-          {LINKS.map(l => (
+          {LINKS.map(l => l.external ? (
+            <a
+              key={l.to}
+              href={l.to}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative px-4 py-2 rounded-lg text-[15px] font-medium transition-colors duration-150 whitespace-nowrap text-white/60 hover:text-white hover:bg-white/[0.05]"
+            >
+              {l.label}
+            </a>
+          ) : (
             <NavLink
               key={l.to}
               to={l.to}
@@ -105,7 +116,18 @@ export default function Navbar() {
           className="fixed top-[72px] inset-x-0 z-40 md:hidden bg-[#111827] border-b border-white/[0.07] shadow-2xl"
         >
           <div className="px-4 py-4 flex flex-col gap-1">
-            {LINKS.map(l => (
+            {LINKS.map(l => l.external ? (
+              <a
+                key={l.to}
+                href={l.to}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                className="px-4 py-3.5 rounded-xl text-[17px] font-medium transition-colors text-white/65 hover:text-white hover:bg-white/[0.05]"
+              >
+                {l.label}
+              </a>
+            ) : (
               <NavLink
                 key={l.to}
                 to={l.to}

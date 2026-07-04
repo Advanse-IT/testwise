@@ -9,6 +9,7 @@ const NAV = [
   { to:'/how-it-works',  label:'How it works' },
   { to:'/industries',    label:'Industries'   },
   { to:'/demo',          label:'Demo'         },
+  { to:'https://advanseit.com.au/blog?category=Testwise', label:'Blog', external:true },
   { to:'/contact',       label:'Contact'      },
 ]
 
@@ -39,7 +40,12 @@ export default function Footer() {
           <div>
             <div className="text-[11px] font-semibold tracking-[0.14em] uppercase text-white/25 mb-5">Product</div>
             <nav aria-label="Footer product navigation">
-              {NAV.map(l => (
+              {NAV.map(l => l.external ? (
+                <a key={l.to} href={l.to} target="_blank" rel="noopener noreferrer"
+                  className="block text-[15px] text-white/45 hover:text-white/80 transition-colors duration-150 mb-3 font-light">
+                  {l.label}
+                </a>
+              ) : (
                 <Link key={l.to} to={l.to}
                   className="block text-[15px] text-white/45 hover:text-white/80 transition-colors duration-150 mb-3 font-light">
                   {l.label}
